@@ -12,21 +12,14 @@ namespace Game
 
         public static void Main(string[] args)
         {
-            //PlayerData plData = new PlayerData();
-
-            List<string> pl1Data = Console.ReadLine()
+            List<string> plData = Console.ReadLine()
                     .Split()
                     .ToList();
 
-            var pl1Name = pl1Data[0];
-            Player pl1 = new Player(pl1Name);
+            var plName = plData[0];
+            Player pl = new Player(plName);
 
-            List<string> pl2Data = Console.ReadLine()
-                .Split()
-                .ToList();
-
-            var pl2Name = pl2Data[0];
-            Player pl2 = new Player(pl2Name);
+            Monster monster = new Monster();
 
             string command = Console.ReadLine();
 
@@ -37,29 +30,33 @@ namespace Game
                     int countRounds = 1;
                     while (true)
                     {
-                        if (pl1.Health <= 0)
+                        if (pl.Health <= 0)
                         {
-                            Experiance(pl2);
-                            Console.WriteLine($"{pl2.Name} has won!");
+                            if (pl.Experiance >= 0)
+                            {
+                                pl.Experiance -= 10;
+                            }
+                            Console.WriteLine($"{pl.Name} died!");
                             break;
                         }
 
-                        else if (pl2.Health <= 0)
+                        else if (monster.Health <= 0)
                         {
-                            Experiance(pl1);
-                            Console.WriteLine($"{pl1.Name} has won!");
+                            Experiance(pl);
+                            Console.WriteLine($"{monster.Name} died!");
+                            //Console.WriteLine("Loot.......");
                             break;
                         }
 
-                        FightValues(pl1, pl2);
+                        FightValues(pl, monster);
                         Console.WriteLine($"Round {countRounds}");
-                        FightResults(pl1, pl2);
+                        FightResults(pl, monster);
                         Console.WriteLine("---------------------------------------------------------------");
                         countRounds++;
                     }
-                    // Set to default health values.
-                    pl1.Health = 20;
-                    pl2.Health = 20;
+                    // Set to default values.
+                    pl.Health = 30;
+                    monster.Health = monster.Random(30, 40);
                 }
 
                 command = Console.ReadLine();

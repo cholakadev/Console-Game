@@ -8,7 +8,7 @@
             this.Experiance = 0;
             this.Level = 1;
             this.Name = name;
-            this.Health = 20;
+            this.Health = 30;
             this.Damage = 0;
             this.DamageAbsorb = 0;
         }
