@@ -21,45 +21,45 @@ namespace Game
 
             Monster monster = new Monster();
 
-            string command = Console.ReadLine();
+            string[] inputCommand = Console.ReadLine()
+                .Split()
+                .ToArray();
 
-            while (command.ToLower() != "end")
+            while (true)
             {
-                if (command.ToLower() == "fight")
+                if (inputCommand[0].ToLower() == "fight" && inputCommand[1].ToLower() == "monster")
                 {
-                    int countRounds = 1;
-                    while (true)
+                    if (pl.Health <= 0)
                     {
-                        if (pl.Health <= 0)
-                        {
-                            if (pl.Experiance >= 0)
-                            {
-                                pl.Experiance -= 10;
-                            }
-                            Console.WriteLine($"{pl.Name} died!");
-                            break;
-                        }
-
-                        else if (monster.Health <= 0)
-                        {
-                            Experiance(pl);
-                            Console.WriteLine($"{monster.Name} died!");
-                            //Console.WriteLine("Loot.......");
-                            break;
-                        }
-
-                        FightValues(pl, monster);
-                        Console.WriteLine($"Round {countRounds}");
-                        FightResults(pl, monster);
-                        Console.WriteLine("---------------------------------------------------------------");
-                        countRounds++;
+                        Console.WriteLine("You died!");
+                        break;
                     }
-                    // Set to default values.
-                    pl.Health = 30;
-                    monster.Health = monster.Random(30, 40);
+                    else if (monster.Health <= 0)
+                    {
+                        Console.WriteLine("Goblin died!");
+                        break;
+                    }
+
+                    FightMonsterValues(pl, monster);
+
+                    FightResults(pl, monster);
                 }
 
-                command = Console.ReadLine();
+                if (pl.Level == 5)
+                {
+                    Console.WriteLine($"{pl.Name} has reached max level! Congratulations!");
+                    break;
+                }
+
+                Console.WriteLine("-------------------------------");
+
+                // Set to default values.
+                pl.Health = 30;
+                monster.Health = monster.Random(30, 40);
+
+                inputCommand = Console.ReadLine()
+                    .Split()
+                    .ToArray();
             }
         }
     }

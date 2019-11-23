@@ -5,11 +5,11 @@
     {
         public static void FightResults(Player pl, Monster monster)
         {
-            Console.WriteLine($"{pl.Name} hit {monster.Name} and dealing {pl.Damage} damage. {monster.Name} left with {monster.Health} health!");
-            Console.WriteLine($"{monster.Name} hit {pl.Name} and dealing {monster.Damage} damage. {pl.Name} left with {pl.Health} health!");
+            Console.WriteLine($"{pl.Name} hit {monster.Name} and dealing {pl.Damage}!");
+            Console.WriteLine($"{monster.Name} hit {pl.Name} and dealing {monster.Damage}!");
         }
 
-        public static void FightValues(Player pl, Monster monster)
+        public static void FightMonsterValues(Player pl, Monster monster)
         {
             pl.Damage = pl.Random(5, 12);
             monster.Damage = monster.Random(5, 12);
@@ -44,7 +44,10 @@
             {
                 pl.Level++;
                 pl.Experiance = pl.Experiance - 100;
-                Console.WriteLine($"{pl.Name} has reached level {pl.Level}");
+                if (pl.Level < 5)
+                {
+                    Console.WriteLine($"{pl.Name} has reached level {pl.Level}");
+                }
             }
 
         }
@@ -53,6 +56,14 @@
         {
             Random random = new Random();
             return random.Next(minValue, maxValue);
+        }
+
+        public static void LoseExperiance(Player pl)
+        {
+            if (pl.Experiance >= 0)
+            {
+                pl.Experiance -= 10;
+            }
         }
     }
 }
