@@ -29,33 +29,37 @@ namespace Game
             {
                 if (inputCommand[0].ToLower() == "fight" && inputCommand[1].ToLower() == "monster")
                 {
-                    if (pl.Health <= 0)
-                    {
-                        Console.WriteLine("You died!");
-                        break;
-                    }
-                    else if (monster.Health <= 0)
-                    {
-                        Console.WriteLine("Goblin died!");
-                        break;
-                    }
-
-                    FightMonsterValues(pl, monster);
-
                     FightResults(pl, monster);
+
+                    while (true)
+                    {
+                        if (pl.Health <= 0)
+                        {
+                            LoseExperiance(pl, 10);
+                            break;
+                        }
+
+                        else if (monster.Health <= 0)
+                        {
+                            Experiance(pl);
+                            break;
+                        }
+
+                        if (pl.Level == 5)
+                        {
+                            Console.WriteLine("You have reached max level!");
+                            break;
+                        }
+
+                        FightMonsterValues(pl, monster);
+                    }
+
+                    // Set to default values.
+                    pl.Health = 30;
+                    monster.Health = monster.Random(30, 40);
                 }
 
-                if (pl.Level == 5)
-                {
-                    Console.WriteLine($"{pl.Name} has reached max level! Congratulations!");
-                    break;
-                }
-
-                Console.WriteLine("-------------------------------");
-
-                // Set to default values.
-                pl.Health = 30;
-                monster.Health = monster.Random(30, 40);
+                Console.WriteLine("---------------------------------");
 
                 inputCommand = Console.ReadLine()
                     .Split()
