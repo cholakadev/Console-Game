@@ -6,10 +6,6 @@ namespace Game
 {
     public class Program : Methods
     {
-        public Program()
-        {
-        }
-
         public static void Main(string[] args)
         {
             List<string> plData = Console.ReadLine()
@@ -41,17 +37,17 @@ namespace Game
 
                         else if (monster.Health <= 0)
                         {
-                            Experiance(pl);
-                            break;
-                        }
-
-                        if (pl.Level == 5)
-                        {
-                            Console.WriteLine("You have reached max level!");
+                            Experience(pl);
                             break;
                         }
 
                         FightMonsterValues(pl, monster);
+                    }
+
+                    if (pl.Level == 5)
+                    {
+                        Console.WriteLine("You have reached max level!");
+                        break;
                     }
 
                     // Set to default values.

@@ -5,7 +5,7 @@
     {
         public Player(string name)
         {
-            this.Experiance = 0;
+            this.Experience = 0;
             this.Level = 1;
             this.Name = name;
             this.Health = 30;
@@ -13,7 +13,7 @@
             this.DamageAbsorb = 0;
         }
 
-        public int Experiance { get; set; }
+        public int Experience { get; set; }
         public int Level { get; set; }
         public string Name { get; set; }
         public int Health { get; set; }

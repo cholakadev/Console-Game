@@ -1,0 +1,11 @@
+﻿1. Create general class "Character" that "Monster" and "Player" inherits. 
+
+2. Create a class "Boss" that inherits the "Character" class.
+
+3. Fix variable and class names.
+
+4. Create a "DropItems" method to get a loot after killing a monster. Drop random weapon/gear with random damage/damage absorb/health.
+
+6. Create a class that initializes IEnumerable to loop over every weapon / gear.
+
+7. Initialize ICompareble to compare the gear / weapon loot and check if it's better than the current one and if so replace it.
