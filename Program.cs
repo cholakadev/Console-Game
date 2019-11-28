@@ -4,10 +4,12 @@ using System.Linq;
 
 namespace Game
 {
-    public class Program : Methods
+    public class Program
     {
         public static void Main(string[] args)
         {
+            Weapon weapon = new Weapon();
+
             List<string> plData = Console.ReadLine()
                     .Split()
                     .ToList();
@@ -25,23 +27,24 @@ namespace Game
             {
                 if (inputCommand[0].ToLower() == "fight" && inputCommand[1].ToLower() == "monster")
                 {
-                    FightResults(pl, monster);
-
                     while (true)
                     {
+                        BattleManager.Fight(pl, monster);
+
                         if (pl.Health <= 0)
                         {
-                            LoseExperiance(pl, 10);
+                            BattleManager.PrintFightResults(pl, monster);
+                            pl.LoseExperiance(pl, 10);
                             break;
                         }
 
                         else if (monster.Health <= 0)
                         {
-                            Experience(pl);
+                            BattleManager.PrintFightResults(pl, monster);
+                            pl.EarnExperience(pl);
+                            LootManager.DropSilver(pl);
                             break;
                         }
-
-                        FightMonsterValues(pl, monster);
                     }
 
                     if (pl.Level == 5)
