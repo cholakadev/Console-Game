@@ -55,7 +55,7 @@ namespace Game
 
                     // Set to default values.
                     pl.Health = 30;
-                    monster.Health = monster.Random(30, 40);
+                    monster.Health = UtilityMethods.Random(30, 40);
                 }
 
                 Console.WriteLine("---------------------------------");

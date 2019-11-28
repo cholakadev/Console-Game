@@ -24,12 +24,6 @@
         public int Silver { get; set; }
         public int Gold { get; set; }
 
-        public int Random(int minValue, int maxValue)
-        {
-            Random random = new Random();
-            return random.Next(minValue, maxValue);
-        }
-
         public void EarnExperience(Player pl)
         {
             int exp = 0;
@@ -37,14 +31,14 @@
             if (pl.Level < 3)
             {
                 exp = 60;
-                pl.Damage = Random(5, 12);
+                pl.Damage = UtilityMethods.Random(5, 12);
                 pl.Experience += exp;
                 Console.WriteLine($"{exp}% experience earned!");
             }
             else if (pl.Level >= 3 && pl.Level < 6)
             {
                 exp = 30;
-                pl.Damage = Random(6, 14);
+                pl.Damage = UtilityMethods.Random(6, 14);
                 pl.Experience += exp;
                 Console.WriteLine($"{exp}% experience earned!");
             }
@@ -52,7 +46,7 @@
             else if (pl.Level >= 6)
             {
                 exp = 15;
-                pl.Damage = Random(8, 15);
+                pl.Damage = UtilityMethods.Random(8, 15);
                 pl.Experience += exp;
                 Console.WriteLine($"{exp}% experience earned!");
             }

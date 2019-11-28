@@ -17,10 +17,10 @@
 
         public static void Fight(Player pl, Monster monster)
         {
-            pl.Damage = pl.Random(5, 12);
-            monster.Damage = monster.Random(5, 12);
+            pl.Damage = UtilityMethods.Random(5, 12);
+            monster.Damage = UtilityMethods.Random(5, 12);
 
-            pl.DamageAbsorb = pl.Random(1, 4);
+            pl.DamageAbsorb = UtilityMethods.Random(1, 4);
 
             pl.Health -= monster.Damage - pl.DamageAbsorb;
 
