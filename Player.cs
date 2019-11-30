@@ -22,7 +22,7 @@
         public int Damage { get; set; }
         public int DamageAbsorb { get; set; }
         public int Silver { get; set; }
-        public int Gold { get; set; }
+        public double Gold { get; set; }
 
         public void EarnExperience(Player pl)
         {
@@ -55,7 +55,7 @@
             {
                 pl.Level++;
                 pl.Experience = pl.Experience - 100;
-                if (pl.Level < 5)
+                if (pl.Level < 8)
                 {
                     Console.WriteLine($"{pl.Name} has reached level {pl.Level}");
                 }
@@ -64,15 +64,12 @@
 
         public void LoseExperiance(Player pl, int exp)
         {
-            if (pl.Experience == 0)
-            {
-                Console.WriteLine("You lost 0% experience!");
-            }
-            else if (pl.Experience > 0 && pl.Experience <= 10)
+            if (pl.Experience > 0 && pl.Experience <= 10)
             {
                 Console.WriteLine($"You lost {exp - pl.Experience} experience");
                 pl.Experience = 0;
             }
+
             else if (pl.Experience > 10)
             {
                 Console.WriteLine($"You lost {exp}% experience!");

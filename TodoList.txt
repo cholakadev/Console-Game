@@ -9,3 +9,5 @@
 6. Create a class that initializes IEnumerable to loop over every weapon / gear.
 
 7. Initialize ICompareble to compare the gear / weapon loot and check if it's better than the current one and if so replace it.
+
+8. Player info and Gear info command. IEnumerable loop over the current player stats and gear stats.

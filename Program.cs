@@ -8,14 +8,14 @@ namespace Game
     {
         public static void Main(string[] args)
         {
-            Weapon weapon = new Weapon();
-
             List<string> plData = Console.ReadLine()
                     .Split()
                     .ToList();
 
+            PlayerData playerData = new PlayerData();
             var plName = plData[0];
             Player pl = new Player(plName);
+            playerData.Add(pl);
 
             Monster monster = new Monster();
 
@@ -31,14 +31,14 @@ namespace Game
                     {
                         BattleManager.Fight(pl, monster);
 
-                        if (pl.Health <= 0)
+                        if (pl.Health <= 0 && pl.Health < monster.Health)
                         {
                             BattleManager.PrintFightResults(pl, monster);
                             pl.LoseExperiance(pl, 10);
                             break;
                         }
 
-                        else if (monster.Health <= 0)
+                        else if (monster.Health <= 0 && monster.Health < pl.Health)
                         {
                             BattleManager.PrintFightResults(pl, monster);
                             pl.EarnExperience(pl);
@@ -47,9 +47,9 @@ namespace Game
                         }
                     }
 
-                    if (pl.Level == 5)
+                    if (pl.Level == 8)
                     {
-                        Console.WriteLine("You have reached max level!");
+                        Console.WriteLine($"{pl.Name} have reached max level!");
                         break;
                     }
 
@@ -58,7 +58,12 @@ namespace Game
                     monster.Health = UtilityMethods.Random(30, 40);
                 }
 
-                Console.WriteLine("---------------------------------");
+                if (inputCommand[0].ToLower() == "player" && inputCommand[1].ToLower() == "stats")
+                {
+                    PlayerManager.PlayerStats(pl, playerData);
+                }
+
+                Console.WriteLine("---------------------------------------");
 
                 inputCommand = Console.ReadLine()
                     .Split()
