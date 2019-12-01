@@ -8,6 +8,12 @@ namespace Game
     {
         public static void Main(string[] args)
         {
+            // Load gears
+            Weapon wpn = new Weapon();
+            wpn.AddWeapons();
+
+            // ----------------------------
+
             List<string> plData = Console.ReadLine()
                     .Split()
                     .ToList();
@@ -15,6 +21,7 @@ namespace Game
             PlayerData playerData = new PlayerData();
             var plName = plData[0];
             Player pl = new Player(plName);
+
             playerData.Add(pl);
 
             Monster monster = new Monster();
