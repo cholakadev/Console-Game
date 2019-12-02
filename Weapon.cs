@@ -1,5 +1,6 @@
 ﻿namespace Game
 {
+    using System;
     using System.Collections;
     using System.Collections.Generic;
     public class Weapon : IEnumerable<Weapon>
