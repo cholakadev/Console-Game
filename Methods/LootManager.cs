@@ -14,7 +14,6 @@
             {
                 pl.Silver -= 100;
                 pl.Gold++;
-                Console.WriteLine(pl.Gold + " gold.");
             }
         }
     }

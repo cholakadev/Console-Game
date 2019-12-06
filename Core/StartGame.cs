@@ -12,37 +12,38 @@
         private void CheckCommand(Player pl, Monster monster, PlayerData playerData)
         {
             string[] inputCommand = Console.ReadLine().Split().ToArray();
-            string command = inputCommand[0];
-            string action = inputCommand[1];
 
             while (true)
             {
-                if (command.ToLower() == "fight" && action.ToLower() == "monster")
+                string command = inputCommand[0];
+                string action = inputCommand[1];
+
+                bool fightMonster = command.ToLower() == "fight" && action.ToLower() == "monster";
+                bool playerStats = command.ToLower() == "player" && action.ToLower() == "stats";
+
+                if (fightMonster)
                 {
-                    CheckWhoDied(pl, monster);
-                    if (pl.Level == 8)
+                    try
                     {
-                        Console.WriteLine($"{pl.Name} have reached max level!");
+                        CheckIfPlayerIsMaxLevel(pl, monster);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
                         break;
                     }
+
                     SetToDefaultValues(pl, monster);
                 }
-                if (command.ToLower() == "player" && action.ToLower() == "stats")
+
+                if (playerStats)
                 {
                     PlayerManager.PlayerStats(pl, playerData);
                 }
-                Console.WriteLine("---------------------------------------");
+                Console.WriteLine();
 
                 inputCommand = Console.ReadLine().Split().ToArray();
-                command = inputCommand[0];
-                action = inputCommand[1];
             }
-        }
-
-        private void SetToDefaultValues(Player pl, Monster monster)
-        {
-            pl.Health = 30;
-            monster.Health = UtilityMethods.Random(30, 40);
         }
 
         private void CheckWhoDied(Player pl, Monster monster)
@@ -67,5 +68,24 @@
                 }
             }
         }
+
+        private void CheckIfPlayerIsMaxLevel(Player pl, Monster monster)
+        {
+            if (pl.Level < 8)
+            {
+                CheckWhoDied(pl, monster);
+            }
+            else
+            {
+                throw new ArgumentException($"{pl.Name} have reached max level!");
+            }
+        }
+
+        private void SetToDefaultValues(Player pl, Monster monster)
+        {
+            pl.Health = 30;
+            monster.Health = UtilityMethods.Random(30, 40);
+        }
+
     }
 }

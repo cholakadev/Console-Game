@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
 namespace Game
 {
     public class Program
@@ -12,21 +9,14 @@ namespace Game
             Weapon wpn = new Weapon();
             wpn.AddWeapons();
 
-            // ----------------------------
-
-            PlayerData playerData = new PlayerData();
-            List<string> plData = Console.ReadLine()
-                    .Split()
-                    .ToList();
-
-            var plName = plData[0];
-            Player pl = new Player(plName);
-            playerData.Add(pl);
-
+            Player pl = new Player(Console.ReadLine());
             Monster monster = new Monster();
 
-            StartGame start = new StartGame();
-            start.Start(pl, monster, playerData);
+            PlayerData playerData = new PlayerData();
+            playerData.Add(pl);
+
+            StartGame Game = new StartGame();
+            Game.Start(pl, monster, playerData);
         }
     }
 }
