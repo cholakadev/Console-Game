@@ -6,11 +6,15 @@
     {
         public void Start(Player pl, Monster monster, PlayerData playerData)
         {
-            CheckCommand(pl, monster, playerData);
+            GameBody(pl, monster, playerData);
         }
 
-        private void CheckCommand(Player pl, Monster monster, PlayerData playerData)
+        private void GameBody(Player pl, Monster monster, PlayerData playerData)
         {
+            // Load gears
+            ItemManager items = new ItemManager();
+            items.LoadItems();
+
             string[] inputCommand = Console.ReadLine().Split().ToArray();
 
             while (true)
@@ -54,14 +58,14 @@
 
                 if (pl.Health <= 0 && pl.Health < monster.Health)
                 {
-                    BattleManager.PrintFightResults(pl, monster);
+                    BattleManager.PrintBattleResults(pl, monster);
                     pl.LoseExperiance(pl, 10);
                     break;
                 }
 
                 else if (monster.Health <= 0 && monster.Health < pl.Health)
                 {
-                    BattleManager.PrintFightResults(pl, monster);
+                    BattleManager.PrintBattleResults(pl, monster);
                     pl.EarnExperience(pl);
                     LootManager.DropSilver(pl);
                     break;
@@ -71,7 +75,7 @@
 
         private void CheckIfPlayerIsMaxLevel(Player pl, Monster monster)
         {
-            if (pl.Level < 8)
+            if (pl.Level <= 8)
             {
                 CheckWhoDied(pl, monster);
             }

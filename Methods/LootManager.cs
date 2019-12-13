@@ -5,9 +5,7 @@
     {
         public static void DropSilver(Player pl)
         {
-            Random random = new Random();
-
-            int result = random.Next(55, 85);
+            int result = UtilityMethods.Random(55, 85);
             pl.Silver += result;
 
             if (pl.Silver >= 100)

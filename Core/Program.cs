@@ -5,10 +5,7 @@ namespace Game
     {
         public static void Main(string[] args)
         {
-            // Load gears
-            Weapon wpn = new Weapon();
-            wpn.AddWeapons();
-
+            Console.Write("Choose player name: ");
             Player pl = new Player(Console.ReadLine());
             Monster monster = new Monster();
 

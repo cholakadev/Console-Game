@@ -1,15 +1,12 @@
 ﻿namespace Game
 {
     using System;
-    public class Player
+    public class Player : Character
     {
-        public Player(string name)
+        public Player(string name) : base(name, 0, 30)
         {
             this.Experience = 0;
             this.Level = 1;
-            this.Name = name;
-            this.Health = 30;
-            this.Damage = 0;
             this.DamageAbsorb = 0;
             this.Gold = 0;
             this.Silver = 0;
@@ -17,9 +14,6 @@
 
         public int Experience { get; set; }
         public int Level { get; set; }
-        public string Name { get; set; }
-        public int Health { get; set; }
-        public int Damage { get; set; }
         public int DamageAbsorb { get; set; }
         public int Silver { get; set; }
         public double Gold { get; set; }

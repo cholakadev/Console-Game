@@ -3,7 +3,7 @@
     using System;
     public class BattleManager
     {
-        public static void PrintFightResults(Player pl, Monster monster)
+        public static void PrintBattleResults(Player pl, Monster monster)
         {
             if (pl.Health < monster.Health)
             {
