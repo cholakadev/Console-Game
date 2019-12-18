@@ -12,7 +12,7 @@
 
             //foreach (var weapon in collection)
             //{
-            //    System.Console.WriteLine($"{weapon.Name} - {weapon.Parameter}");
+            //    System.Console.WriteLine(weapon);
             //}
         }
 
@@ -25,17 +25,17 @@
 
         private void AddGears(ItemsList collection)
         {
-            collection.Add(new Gear("Bronze Cuirass", 2));
-            collection.Add(new Gear("Silver Cuirass", 3));
-            collection.Add(new Gear("Golden Cuirass", 4));
+            collection.Add(new Gear("Bronze Cuirass", 10, 2));
+            collection.Add(new Gear("Silver Cuirass", 20, 3));
+            collection.Add(new Gear("Golden Cuirass", 30, 4));
 
-            collection.Add(new Gear("Bronze Boots", 2));
-            collection.Add(new Gear("Bronze Boots", 3));
-            collection.Add(new Gear("Bronze Boots", 4));
+            collection.Add(new Gear("Bronze Boots", 10, 2));
+            collection.Add(new Gear("Silver Boots", 20, 3));
+            collection.Add(new Gear("Golden Boots", 30, 4));
 
-            collection.Add(new Gear("Bronze Armguard", 2));
-            collection.Add(new Gear("Bronze Armguard", 3));
-            collection.Add(new Gear("Bronze Armguard", 4));
+            collection.Add(new Gear("Bronze Armguard", 10, 2));
+            collection.Add(new Gear("Silver Armguard", 20, 3));
+            collection.Add(new Gear("Golden Armguard", 30, 4));
         }
 
         private void AddGems(ItemsList collection)

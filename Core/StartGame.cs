@@ -2,6 +2,10 @@
 {
     using System;
     using System.Linq;
+    using Pets.InGameShop;
+    using In_GameShop;
+    using Game.InGameShop.Gems;
+
     public class StartGame
     {
         public void Start(Player pl, Monster monster, PlayerData playerData)
@@ -15,6 +19,8 @@
             ItemManager items = new ItemManager();
             items.LoadItems();
 
+            Pet pets = new Pet();
+
             string[] inputCommand = Console.ReadLine().Split().ToArray();
 
             while (true)
@@ -24,6 +30,7 @@
 
                 bool fightMonster = command.ToLower() == "fight" && action.ToLower() == "monster";
                 bool playerStats = command.ToLower() == "player" && action.ToLower() == "stats";
+                bool inGameShop = command.ToLower() == "in-game" && action.ToLower() == "shop";
 
                 if (fightMonster)
                 {
@@ -31,6 +38,7 @@
                     {
                         CheckIfPlayerIsMaxLevel(pl, monster);
                     }
+
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.Message);
@@ -43,6 +51,16 @@
                 if (playerStats)
                 {
                     PlayerManager.PlayerStats(pl, playerData);
+                }
+
+                if (inGameShop)
+                {
+                    Console.WriteLine("Pets    Gems    Lucky Boxes");
+                    string shopTab = Console.ReadLine();
+                    PetTab petShop = new PetTab();
+                    GemTab gemShop = new GemTab();
+
+                    Shop(shopTab, petShop, gemShop);
                 }
                 Console.WriteLine();
 
@@ -91,5 +109,34 @@
             monster.Health = UtilityMethods.Random(30, 40);
         }
 
+        private void Shop(string shopTab, PetTab petShop, GemTab gemShop)
+        {
+            while (true)
+            {
+                if (shopTab == "Exit")
+                {
+                    break;
+                }
+
+                if (shopTab == "Pets")
+                {
+                    petShop.AddPet(petShop);
+                    petShop.PrintPetTab(petShop);
+                    shopTab = Console.ReadLine();
+                }
+
+                if (shopTab == "Gems")
+                {
+                    gemShop.AddGems(gemShop);
+                    gemShop.PrintGemTab(gemShop);
+                    shopTab = Console.ReadLine();
+                }
+
+                //if (shopTab == "Lucky Box")
+                //{
+
+                //}
+            }
+        }
     }
 }

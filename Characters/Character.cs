@@ -1,6 +1,6 @@
 ﻿namespace Game
 {
-    public class Character
+    public abstract class Character
     {
         public Character(string name, int damage, int health)
         {

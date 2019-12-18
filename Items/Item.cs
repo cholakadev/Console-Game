@@ -2,13 +2,15 @@
 {
     public class Item
     {
-        public Item(string name, int parameter)
+        interface IItem
+        {
+            string Name { get; set; }
+        }
+        public Item(string name)
         {
             this.Name = name;
-            this.Parameter = parameter;
         }
 
         public string Name { get; set; }
-        public int Parameter { get; set; }
     }
 }
