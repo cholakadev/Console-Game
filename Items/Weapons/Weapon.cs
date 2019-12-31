@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace Game
+﻿namespace Game.Items.Weapons
 {
+    using System;
     public class Weapon : Item
     {
         public Weapon(string name, int damage) : base(name)

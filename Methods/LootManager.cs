@@ -1,6 +1,6 @@
-﻿namespace Game
+﻿namespace Game.Methods
 {
-    using System;
+    using Game.Characters;
     public class LootManager
     {
         public static void DropSilver(Player pl)

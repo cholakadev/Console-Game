@@ -1,5 +1,8 @@
-﻿namespace Game
+﻿namespace Game.Items
 {
+    using Game.Items.Weapons;
+    using Game.Items.Gems;
+    using Game.Items.Gears;
     public class ItemManager
     {
         public void LoadItems()

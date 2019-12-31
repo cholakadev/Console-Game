@@ -1,7 +1,8 @@
-﻿namespace Game
+﻿namespace Game.Methods
 {
     using System;
     using System.Text;
+    using Game.Characters;
     public class PlayerManager
     {
         public static void PlayerStats(Player pl, PlayerData playerData)

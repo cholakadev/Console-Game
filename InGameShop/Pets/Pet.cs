@@ -1,4 +1,4 @@
-﻿namespace Game.Pets.InGameShop
+﻿namespace Game.InGameShop.Pets
 {
     using In_GameShop;
     using System;

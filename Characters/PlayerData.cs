@@ -1,4 +1,4 @@
-﻿namespace Game
+﻿namespace Game.Characters
 {
     using System.Collections;
     using System.Collections.Generic;

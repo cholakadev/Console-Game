@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Game
+﻿namespace Game.Items.Gems
 {
+    using System;
+
     public class Gem : Item
     {
         public Gem(string name, int maxCombineLevel) : base(name)

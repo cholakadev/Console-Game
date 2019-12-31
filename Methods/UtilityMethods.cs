@@ -1,4 +1,4 @@
-﻿namespace Game
+﻿namespace Game.Methods
 {
     using System;
     public class UtilityMethods

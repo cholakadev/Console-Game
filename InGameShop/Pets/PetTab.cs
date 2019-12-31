@@ -3,8 +3,7 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
-    using System.Text;
-    using Pets.InGameShop;
+    using InGameShop.Pets;
 
     public class PetTab : IEnumerable<ShopItem>
     {

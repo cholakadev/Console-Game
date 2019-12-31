@@ -4,8 +4,6 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
-    using System.Text;
-
     public class GemTab : IEnumerable<ShopItem>
     {
         private List<ShopItem> gemShop;

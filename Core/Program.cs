@@ -1,6 +1,7 @@
-﻿using System;
-namespace Game
+﻿namespace Game.Core
 {
+    using System;
+    using Game.Characters;
     public class Program
     {
         public static void Main(string[] args)

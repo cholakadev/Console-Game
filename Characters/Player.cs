@@ -1,6 +1,7 @@
-﻿namespace Game
+﻿namespace Game.Characters
 {
     using System;
+    using Game.Methods;
     public class Player : Character
     {
         public Player(string name) : base(name, 0, 30)

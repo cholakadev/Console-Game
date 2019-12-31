@@ -1,6 +1,7 @@
-﻿namespace Game
+﻿namespace Game.Methods
 {
     using System;
+    using Game.Characters;
     public class BattleManager
     {
         public static void PrintBattleResults(Player pl, Monster monster)

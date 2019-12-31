@@ -1,10 +1,13 @@
-﻿namespace Game
+﻿namespace Game.Core
 {
     using System;
     using System.Linq;
-    using Pets.InGameShop;
+    using InGameShop.Pets;
     using In_GameShop;
     using Game.InGameShop.Gems;
+    using Game.Characters;
+    using Game.Items;
+    using Game.Methods;
 
     public class StartGame
     {
@@ -18,8 +21,6 @@
             // Load gears
             ItemManager items = new ItemManager();
             items.LoadItems();
-
-            Pet pets = new Pet();
 
             string[] inputCommand = Console.ReadLine().Split().ToArray();
 
@@ -55,7 +56,7 @@
 
                 if (inGameShop)
                 {
-                    Console.WriteLine("Pets    Gems    Lucky Boxes");
+                    Console.WriteLine($"Our in-game shop disposes with pets, gems and lucky box sections.");
                     string shopTab = Console.ReadLine();
                     PetTab petShop = new PetTab();
                     GemTab gemShop = new GemTab();
@@ -113,19 +114,23 @@
         {
             while (true)
             {
-                if (shopTab == "Exit")
+                bool toExit = shopTab.ToLower() == "exit";
+                bool toPetsTab = shopTab.ToLower() == "pets";
+                bool toGemsTab = shopTab.ToLower() == "gems";
+
+                if (toExit)
                 {
                     break;
                 }
 
-                if (shopTab == "Pets")
+                if (toPetsTab)
                 {
                     petShop.AddPet(petShop);
                     petShop.PrintPetTab(petShop);
                     shopTab = Console.ReadLine();
                 }
 
-                if (shopTab == "Gems")
+                if (toGemsTab)
                 {
                     gemShop.AddGems(gemShop);
                     gemShop.PrintGemTab(gemShop);
