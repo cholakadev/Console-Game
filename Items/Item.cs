@@ -1,6 +1,6 @@
 ﻿namespace Game.Items
 {
-    public class Item
+    public abstract class Item
     {
         interface IItem
         {

@@ -2,17 +2,17 @@
 {
     using System.Collections;
     using System.Collections.Generic;
-    public class PlayerData : IEnumerable<Player>
+    public sealed class PlayerData : IEnumerable<Player>
     {
+        private List<Player> Players;
         public PlayerData()
         {
             this.Players = new List<Player>();
         }
 
-        public List<Player> Players { get; set; }
-        public void Add(Player pl)
+        public void Add(Player player)
         {
-            this.Players.Add(pl);
+            this.Players.Add(player);
         }
 
         public IEnumerator<Player> GetEnumerator()

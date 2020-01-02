@@ -2,32 +2,32 @@
 {
     using System;
     using Game.Characters;
-    public class BattleManager
+    public sealed class BattleManager
     {
-        public static void PrintBattleResults(Player pl, Monster monster)
+        public static void PrintBattleResults(Player player, Monster monster)
         {
-            if (pl.Health < monster.Health)
+            if (player.Health < monster.Health)
             {
-                Console.WriteLine($"{monster.Name} has slain {pl.Name} and left with {monster.Health} health!");
+                Console.WriteLine($"{monster.Name} has slain {player.Name} and left with {monster.Health} health!");
             }
 
-            else if (monster.Health < pl.Health)
+            else if (monster.Health < player.Health)
             {
-                Console.WriteLine($"{pl.Name} has slain {monster.Name} and left with {pl.Health} health!");
+                Console.WriteLine($"{player.Name} has slain {monster.Name} and left with {player.Health} health!");
             }
         }
 
-        public static void Fight(Player pl, Monster monster)
+        public static void Fight(Player player, Monster monster)
         {
-            pl.Damage = UtilityMethods.Random(5, 12);
+            player.Damage = UtilityMethods.Random(5, 12);
 
             monster.Damage = UtilityMethods.Random(5, 12);
 
-            pl.DamageAbsorb = UtilityMethods.Random(1, 4);
+            player.DamageAbsorb = UtilityMethods.Random(1, 4);
 
-            pl.Health -= monster.Damage - pl.DamageAbsorb;
+            player.Health -= monster.Damage - player.DamageAbsorb;
 
-            monster.Health -= pl.Damage;
+            monster.Health -= player.Damage;
         }
     }
 }

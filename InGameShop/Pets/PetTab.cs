@@ -5,7 +5,7 @@
     using System.Collections.Generic;
     using InGameShop.Pets;
 
-    public class PetTab : IEnumerable<ShopItem>
+    public sealed class PetTab : IEnumerable<ShopItem>
     {
         private List<ShopItem> petShop;
 

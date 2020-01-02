@@ -3,7 +3,7 @@
     using Game.Items.Weapons;
     using Game.Items.Gems;
     using Game.Items.Gears;
-    public class ItemManager
+    public sealed class ItemManager
     {
         public void LoadItems()
         {
@@ -12,6 +12,7 @@
             AddWeapons(collection);
             AddGears(collection);
             AddGems(collection);
+            ShuffleList(collection);
 
             //foreach (var weapon in collection)
             //{
@@ -50,6 +51,15 @@
             collection.Add(new Gem("Small Emerald", 1));
             collection.Add(new Gem("Medium Emerald", 3));
             collection.Add(new Gem("Large Emerald", 5));
+        }
+
+        private void ShuffleList(ItemsList collection)
+        {
+            AddWeapons(collection);
+            AddGears(collection);
+            AddGems(collection);
+
+            //collection.Shuffle();
         }
     }
 }

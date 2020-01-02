@@ -1,7 +1,8 @@
 ﻿namespace Game.Methods
 {
     using System;
-    public class UtilityMethods
+    using Game.Items;
+    public sealed class UtilityMethods
     {
         public static int Random(int minValue, int maxValue)
         {

@@ -3,7 +3,7 @@
     using System.Collections;
     using System.Collections.Generic;
 
-    class ItemsList : IEnumerable<Item>
+    public sealed class ItemsList : IEnumerable<Item>
     {
         private List<Item> itemsList;
 

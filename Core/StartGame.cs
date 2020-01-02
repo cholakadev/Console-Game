@@ -2,25 +2,22 @@
 {
     using System;
     using System.Linq;
-    using InGameShop.Pets;
-    using In_GameShop;
-    using Game.InGameShop.Gems;
+    using Game.Methods;
     using Game.Characters;
     using Game.Items;
-    using Game.Methods;
+    using In_GameShop;
+    using Game.InGameShop.Gems;
 
-    public class StartGame
+    public sealed class StartGame
     {
-        public void Start(Player pl, Monster monster, PlayerData playerData)
+        public void Start(Player player, Monster monster, PlayerData playerData)
         {
-            GameBody(pl, monster, playerData);
+            GameBody(player, monster, playerData);
         }
 
-        private void GameBody(Player pl, Monster monster, PlayerData playerData)
+        private void GameBody(Player player, Monster monster, PlayerData playerData)
         {
-            // Load gears
-            ItemManager items = new ItemManager();
-            items.LoadItems();
+            LoadGears();
 
             string[] inputCommand = Console.ReadLine().Split().ToArray();
 
@@ -37,7 +34,7 @@
                 {
                     try
                     {
-                        CheckIfPlayerIsMaxLevel(pl, monster);
+                        CheckIfPlayerIsMaxLevel(player, monster);
                     }
 
                     catch (Exception ex)
@@ -46,22 +43,17 @@
                         break;
                     }
 
-                    SetToDefaultValues(pl, monster);
+                    SetToDefaultValues(player, monster);
                 }
 
                 if (playerStats)
                 {
-                    PlayerManager.PlayerStats(pl, playerData);
+                    ShowPlayerStats(player, playerData);
                 }
 
                 if (inGameShop)
                 {
-                    Console.WriteLine($"Our in-game shop disposes with pets, gems and lucky box sections.");
-                    string shopTab = Console.ReadLine();
-                    PetTab petShop = new PetTab();
-                    GemTab gemShop = new GemTab();
-
-                    Shop(shopTab, petShop, gemShop);
+                    GameShop();
                 }
                 Console.WriteLine();
 
@@ -69,44 +61,44 @@
             }
         }
 
-        private void CheckWhoDied(Player pl, Monster monster)
+        private void CheckWhoDied(Player player, Monster monster)
         {
             while (true)
             {
-                BattleManager.Fight(pl, monster);
+                BattleManager.Fight(player, monster);
 
-                if (pl.Health <= 0 && pl.Health < monster.Health)
+                if (player.Health <= 0 && player.Health < monster.Health)
                 {
-                    BattleManager.PrintBattleResults(pl, monster);
-                    pl.LoseExperiance(pl, 10);
+                    BattleManager.PrintBattleResults(player, monster);
+                    player.LoseExperiance(player, 10);
                     break;
                 }
 
-                else if (monster.Health <= 0 && monster.Health < pl.Health)
+                else if (monster.Health <= 0 && monster.Health < player.Health)
                 {
-                    BattleManager.PrintBattleResults(pl, monster);
-                    pl.EarnExperience(pl);
-                    LootManager.DropSilver(pl);
+                    BattleManager.PrintBattleResults(player, monster);
+                    player.EarnExperience(player);
+                    player.DropSilver(player);
                     break;
                 }
             }
         }
 
-        private void CheckIfPlayerIsMaxLevel(Player pl, Monster monster)
+        private void CheckIfPlayerIsMaxLevel(Player player, Monster monster)
         {
-            if (pl.Level <= 8)
+            if (player.Level <= 8)
             {
-                CheckWhoDied(pl, monster);
+                CheckWhoDied(player, monster);
             }
             else
             {
-                throw new ArgumentException($"{pl.Name} have reached max level!");
+                throw new ArgumentException($"{player.Name} have reached max level!");
             }
         }
 
-        private void SetToDefaultValues(Player pl, Monster monster)
+        private void SetToDefaultValues(Player player, Monster monster)
         {
-            pl.Health = 30;
+            player.Health = 30;
             monster.Health = UtilityMethods.Random(30, 40);
         }
 
@@ -142,6 +134,28 @@
 
                 //}
             }
+        }
+
+        private void GameShop()
+        {
+            Console.WriteLine($"Our in-game shop disposes with pets, gems and lucky box sections.");
+            string shopTab = Console.ReadLine();
+            PetTab petShop = new PetTab();
+            GemTab gemShop = new GemTab();
+            //LuckyBox luckyBoxShop = new LuckyBox();
+
+            Shop(shopTab, petShop, gemShop);
+        }
+
+        private void LoadGears()
+        {
+            ItemManager items = new ItemManager();
+            items.LoadItems();
+        }
+
+        private void ShowPlayerStats(Player player, PlayerData playerData)
+        {
+            player.PlayerStats(player, playerData);
         }
     }
 }

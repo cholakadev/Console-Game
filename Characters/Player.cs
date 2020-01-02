@@ -1,6 +1,7 @@
 ﻿namespace Game.Characters
 {
     using System;
+    using System.Text;
     using Game.Methods;
     public class Player : Character
     {
@@ -19,56 +20,94 @@
         public int Silver { get; set; }
         public double Gold { get; set; }
 
-        public void EarnExperience(Player pl)
+        public void EarnExperience(Player player)
         {
             int exp = 0;
 
-            if (pl.Level < 3)
+            if (player.Level < 3)
             {
                 exp = 60;
-                pl.Damage = UtilityMethods.Random(5, 12);
-                pl.Experience += exp;
+                player.Damage = UtilityMethods.Random(5, 12);
+                player.Experience += exp;
                 Console.WriteLine($"{exp}% experience earned!");
             }
-            else if (pl.Level >= 3 && pl.Level < 6)
+            else if (player.Level >= 3 && player.Level < 6)
             {
                 exp = 30;
-                pl.Damage = UtilityMethods.Random(6, 14);
-                pl.Experience += exp;
+                player.Damage = UtilityMethods.Random(6, 14);
+                player.Experience += exp;
                 Console.WriteLine($"{exp}% experience earned!");
             }
 
-            else if (pl.Level >= 6)
+            else if (player.Level >= 6)
             {
                 exp = 15;
-                pl.Damage = UtilityMethods.Random(8, 15);
-                pl.Experience += exp;
+                player.Damage = UtilityMethods.Random(8, 15);
+                player.Experience += exp;
                 Console.WriteLine($"{exp}% experience earned!");
             }
 
-            if (pl.Experience >= 100)
+            CheckIfPlayerIsMaxLevel(player);
+        }
+
+        public void LoseExperiance(Player player, int exp)
+        {
+            if (player.Experience <= 10)
             {
-                pl.Level++;
-                pl.Experience = pl.Experience - 100;
-                if (pl.Level < 8)
+                Console.WriteLine($"Your experience is 0%. Try harder!");
+                player.Experience = 0;
+            }
+
+            else if (player.Experience > 10)
+            {
+                Console.WriteLine($"You lost {exp}% experience!");
+                player.Experience -= exp;
+            }
+        }
+
+        public void CheckIfPlayerIsMaxLevel(Player player)
+        {
+            if (player.Experience >= 100)
+            {
+                player.Level++;
+                player.Experience = player.Experience - 100;
+                if (player.Level < 8)
                 {
-                    Console.WriteLine($"{pl.Name} has reached level {pl.Level}");
+                    Console.WriteLine($"{player.Name} has reached level {player.Level}");
                 }
             }
         }
 
-        public void LoseExperiance(Player pl, int exp)
+        public void DropSilver(Player player)
         {
-            if (pl.Experience > 0 && pl.Experience <= 10)
-            {
-                Console.WriteLine($"You lost {exp - pl.Experience} experience");
-                pl.Experience = 0;
-            }
+            int result = UtilityMethods.Random(55, 85);
+            player.Silver += result;
 
-            else if (pl.Experience > 10)
+            if (player.Silver >= 100)
             {
-                Console.WriteLine($"You lost {exp}% experience!");
-                pl.Experience -= exp;
+                player.Silver -= 100;
+                player.Gold++;
+            }
+        }
+
+        public void PlayerStats(Player player, PlayerData playerData)
+        {
+            foreach (var character in playerData)
+            {
+                StringBuilder sb = new StringBuilder();
+
+                sb.AppendLine($"Level: {character.Level}");
+                sb.AppendLine($"Experience: {character.Experience}");
+                sb.AppendLine($"Health: {character.Health}");
+                sb.AppendLine($"Gold: {character.Gold}.{character.Silver}");
+
+                //sb.AppendLine($"{} sword (damage +{})");
+                //sb.AppendLine($"{} armor (damage absorb +{}, health +{})");
+                //sb.AppendLine($"{} boots (damage absorb +{}, health +{})");
+                //sb.AppendLine($"{} armguard (damage absorb +{}, health +{})");
+
+                string result = sb.ToString().TrimEnd();
+                Console.WriteLine(result);
             }
         }
     }
