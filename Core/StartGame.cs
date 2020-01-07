@@ -55,32 +55,10 @@
                 {
                     GameShop();
                 }
+
                 Console.WriteLine();
 
                 inputCommand = Console.ReadLine().Split().ToArray();
-            }
-        }
-
-        private void CheckWhoDied(Player player, Monster monster)
-        {
-            while (true)
-            {
-                BattleManager.Fight(player, monster);
-
-                if (player.Health <= 0 && player.Health < monster.Health)
-                {
-                    BattleManager.PrintBattleResults(player, monster);
-                    player.LoseExperiance(player, 10);
-                    break;
-                }
-
-                else if (monster.Health <= 0 && monster.Health < player.Health)
-                {
-                    BattleManager.PrintBattleResults(player, monster);
-                    player.EarnExperience(player);
-                    player.DropSilver(player);
-                    break;
-                }
             }
         }
 
@@ -96,10 +74,48 @@
             }
         }
 
+        private void CheckWhoDied(Player player, Monster monster)
+        {
+            while (true)
+            {
+                BattleManager.Fight(player, monster);
+
+                if (player.Health < monster.Health && player.Health <= 0)
+                {
+                    IfPlayerDie(player, monster);
+                    break;
+                }
+
+                else if (monster.Health < player.Health && monster.Health <= 0)
+                {
+                    IfMonsterDie(player, monster);
+                    break;
+                }
+            }
+        }
+
+        private void IfPlayerDie(Player player, Monster monster)
+        {
+            Console.WriteLine($"{monster.Name} has slain {player.Name} and left with {monster.Health} health!");
+            player.LoseExperiance(player, 10);
+        }
+
+        private void IfMonsterDie(Player player, Monster monster)
+        {
+            Console.WriteLine($"{player.Name} has slain {monster.Name} and left with {player.Health} health!");
+            player.EarnExperience(player);
+            player.DropSilver(player);
+        }
+
         private void SetToDefaultValues(Player player, Monster monster)
         {
             player.Health = 30;
             monster.Health = UtilityMethods.Random(30, 40);
+        }
+
+        private void ShowPlayerStats(Player player, PlayerData playerData)
+        {
+            player.PlayerStats(player, playerData);
         }
 
         private void Shop(string shopTab, PetTab petShop, GemTab gemShop)
@@ -151,11 +167,6 @@
         {
             ItemManager items = new ItemManager();
             items.LoadItems();
-        }
-
-        private void ShowPlayerStats(Player player, PlayerData playerData)
-        {
-            player.PlayerStats(player, playerData);
         }
     }
 }

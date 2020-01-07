@@ -1,19 +1,19 @@
-Commands  allowed and what they do:
+﻿Commands  allowed and what they do:
 
-1. fight monster
+✔ 1. fight monster
   - Fighting a Goblin monster with random health and damage. Earn experience if Goblin is dead and if character is dead - lose experience.
   Also you can earn gold or drop random items.
-2. fight boss
+✘ 2. fight boss
   - Fightning a Boss with defined health and damage much stronger then Goblin. You can earn much more experience if boss die and you can 
   drop much better weapons or equipments.
-3. player stats
+✔ 3. player stats
   - That will show the current player statistics, like player level, player current experience, current amount of gold and silver and etc.
-4. combine weapon
+✘ 4. combine weapon
   - That command will check if player got enough gold to combine the current weapon, maximum + is 5 and the different + will cost different amount.
   of gold/silver.
-5. combine (boots/armguard/armor)
+✘ 5. combine (boots/armguard/armor)
   - Same as "combine weapon" command.
-6. inventory
+✘ 6. inventory
   - This command will show the player current equipments, current pet, current gems for combine.
-7. shop
+✔ 7. in-game shop
   - This command will show the in-game shop. There you can use the command "Buy {item name}"

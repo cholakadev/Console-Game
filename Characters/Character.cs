@@ -1,5 +1,6 @@
 ﻿namespace Game.Characters
 {
+    using Game.Methods;
     public abstract class Character
     {
         public Character(string name, int damage, int health)
