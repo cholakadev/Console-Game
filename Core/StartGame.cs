@@ -32,17 +32,7 @@
 
                 if (fightMonster)
                 {
-                    try
-                    {
-                        CheckIfPlayerIsMaxLevel(player, monster);
-                    }
-
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.Message);
-                        break;
-                    }
-
+                    CheckFightResult(player, monster);
                     SetToDefaultValues(player, monster);
                 }
 
@@ -62,19 +52,7 @@
             }
         }
 
-        private void CheckIfPlayerIsMaxLevel(Player player, Monster monster)
-        {
-            if (player.Level <= 8)
-            {
-                CheckWhoDied(player, monster);
-            }
-            else
-            {
-                throw new ArgumentException($"{player.Name} have reached max level!");
-            }
-        }
-
-        private void CheckWhoDied(Player player, Monster monster)
+        public void CheckFightResult(Player player, Monster monster)
         {
             while (true)
             {

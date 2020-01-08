@@ -5,6 +5,7 @@
     using Game.Methods;
     public class Player : Character
     {
+        private int level;
         public Player(string name) : base(name, 0, 30)
         {
             this.Experience = 0;
@@ -15,7 +16,22 @@
         }
 
         public int Experience { get; set; }
-        public int Level { get; set; }
+        public int Level
+        {
+            get
+            {
+                return this.level;
+            }
+            set
+            {
+                if (value == 4)
+                {
+                    throw new ArgumentException($"{this.Name} has reached max level!");
+                }
+
+                this.level = value;
+            }
+        }
         public int DamageAbsorb { get; set; }
         public int Silver { get; set; }
         public double Gold { get; set; }
@@ -47,7 +63,7 @@
                 Console.WriteLine($"{exp}% experience earned!");
             }
 
-            CheckIfPlayerIsMaxLevel(player);
+            LevelUp(player);
         }
 
         public void LoseExperiance(Player player, int exp)
@@ -65,13 +81,13 @@
             }
         }
 
-        public void CheckIfPlayerIsMaxLevel(Player player)
+        public void LevelUp(Player player)
         {
             if (player.Experience >= 100)
             {
                 player.Level++;
                 player.Experience = player.Experience - 100;
-                if (player.Level < 8)
+                if (player.Level < 4)
                 {
                     Console.WriteLine($"{player.Name} has reached level {player.Level}");
                 }
