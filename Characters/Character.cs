@@ -1,7 +1,6 @@
 ﻿namespace Game.Characters
 {
     using System;
-
     public abstract class Character
     {
         private string name;

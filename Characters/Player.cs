@@ -6,6 +6,7 @@
     public class Player : Character
     {
         private int level;
+        private int damageAbsorb;
         public Player(string name) : base(name, 0, 30)
         {
             this.Experience = 0;
@@ -32,7 +33,22 @@
                 this.level = value;
             }
         }
-        public int DamageAbsorb { get; set; }
+        public int DamageAbsorb
+        {
+            get
+            {
+                return this.damageAbsorb;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Damage Absorb can't be less than 0.", "Player Damage Absorb");
+                }
+
+                this.damageAbsorb = value;
+            }
+        }
         public int Silver { get; set; }
         public double Gold { get; set; }
 

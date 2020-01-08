@@ -1,5 +1,6 @@
 ﻿namespace Game.Items.Gems
 {
+    using Game.Methods;
     using System;
 
     public class Gem : Item
@@ -13,8 +14,8 @@
 
         public override string ToString()
         {
-            return $"{this.Name}{Environment.NewLine}" +
-                $"Max combine level: {this.MaxComvineLevel}{Environment.NewLine}";
+            return UtilityMethods
+                .OverrideToStringSpeedImprovement(this.Name, this.MaxComvineLevel, "Max combine level");
         }
     }
 }

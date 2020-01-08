@@ -1,19 +1,35 @@
 ﻿namespace Game.Items.Weapons
 {
     using System;
+    using Methods;
     public class Weapon : Item
     {
+        private int damage;
         public Weapon(string name, int damage) : base(name)
         {
             this.Damage = damage;
         }
 
-        public int Damage { get; set; }
+        public int Damage
+        {
+            get
+            {
+                return this.damage;
+            }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentOutOfRangeException("Weapon damage", "Weapon damage can't be less than or equals to 0.");
+                }
+
+                this.damage = value;
+            }
+        }
 
         public override string ToString()
         {
-            return $"{this.Name}{Environment.NewLine}" +
-                $"Damage: {this.Damage}{Environment.NewLine}";
+            return UtilityMethods.OverrideToStringSpeedImprovement(this.Name, this.Damage, "Damage");
         }
     }
 }

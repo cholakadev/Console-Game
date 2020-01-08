@@ -55,9 +55,9 @@
 
         private void ShuffleList(ItemsList collection)
         {
-            AddWeapons(collection);
-            AddGears(collection);
-            AddGems(collection);
+            //AddWeapons(collection);
+            //AddGears(collection);
+            //AddGems(collection);
 
             //collection.Shuffle();
         }
