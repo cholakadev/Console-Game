@@ -2,6 +2,8 @@
 {
     using System;
     using Game.Characters;
+    using Game.InGameShop.Gems;
+
     public class Program
     {
         public static void Main(string[] args)

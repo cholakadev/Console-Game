@@ -12,9 +12,12 @@
             this.itemsList = new List<Item>();
         }
 
+        public int Count { get; set; }
+
         public void Add(Item item)
         {
             itemsList.Add(item);
+            this.Count++;
         }
 
         public IEnumerator<Item> GetEnumerator()

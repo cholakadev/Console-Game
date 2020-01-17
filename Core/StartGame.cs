@@ -33,7 +33,7 @@
                 if (fightMonster)
                 {
                     CheckFightResult(player, monster);
-                    SetToDefaultValues(player, monster);
+                    player.DefaultValues(player, monster);
                 }
 
                 if (playerStats)
@@ -56,7 +56,7 @@
         {
             while (true)
             {
-                BattleManager.Fight(player, monster);
+                player.FightEngine(player, monster);
 
                 if (player.Health < monster.Health && player.Health <= 0)
                 {
@@ -83,12 +83,6 @@
             Console.WriteLine($"{player.Name} has slain {monster.Name} and left with {player.Health} health!");
             player.EarnExperience(player);
             player.DropSilver(player);
-        }
-
-        private void SetToDefaultValues(Player player, Monster monster)
-        {
-            player.Health = 30;
-            monster.Health = UtilityMethods.Random(30, 40);
         }
 
         private void ShowPlayerStats(Player player, PlayerData playerData)

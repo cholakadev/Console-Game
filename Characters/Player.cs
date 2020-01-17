@@ -2,6 +2,7 @@
 {
     using System;
     using System.Text;
+    using Game.Items;
     using Game.Methods;
     public class Player : Character
     {
@@ -16,14 +17,14 @@
             this.Silver = 0;
         }
 
-        public int Experience { get; set; }
+        public int Experience { get; private set; }
         public int Level
         {
             get
             {
                 return this.level;
             }
-            set
+            private set
             {
                 if (value == 4)
                 {
@@ -51,36 +52,6 @@
         }
         public int Silver { get; set; }
         public double Gold { get; set; }
-
-        public void EarnExperience(Player player)
-        {
-            int exp = 0;
-
-            if (player.Level < 3)
-            {
-                exp = 60;
-                player.Damage = UtilityMethods.Random(5, 12);
-                player.Experience += exp;
-                Console.WriteLine($"{exp}% experience earned!");
-            }
-            else if (player.Level >= 3 && player.Level < 6)
-            {
-                exp = 30;
-                player.Damage = UtilityMethods.Random(6, 14);
-                player.Experience += exp;
-                Console.WriteLine($"{exp}% experience earned!");
-            }
-
-            else if (player.Level >= 6)
-            {
-                exp = 15;
-                player.Damage = UtilityMethods.Random(8, 15);
-                player.Experience += exp;
-                Console.WriteLine($"{exp}% experience earned!");
-            }
-
-            LevelUp(player);
-        }
 
         public void LoseExperiance(Player player, int exp)
         {
@@ -142,5 +113,41 @@
                 Console.WriteLine(result);
             }
         }
+
+        public void EarnExperience(Player player)
+        {
+            int exp = 0;
+
+            if (player.Level < 3)
+            {
+                exp = 60;
+                //player.Damage = UtilityMethods.Random(5, 12);
+                player.Experience += exp;
+                Console.WriteLine($"{exp}% experience earned!");
+            }
+
+            else if (player.Level >= 3 && player.Level < 6)
+            {
+                exp = 30;
+                //player.Damage = UtilityMethods.Random(6, 14);
+                player.Experience += exp;
+                Console.WriteLine($"{exp}% experience earned!");
+            }
+
+            else if (player.Level >= 6)
+            {
+                exp = 15;
+                //player.Damage = UtilityMethods.Random(8, 15);
+                player.Experience += exp;
+                Console.WriteLine($"{exp}% experience earned!");
+            }
+
+            player.LevelUp(player);
+        }
+
+        //public Item DropEquipment(Player player)
+        //{
+        //    Algorithm to drop random equipment each time.
+        //}
     }
 }
