@@ -2,7 +2,6 @@
 {
     using System;
     using System.Linq;
-    using Game.Methods;
     using Game.Characters;
     using Game.Items;
     using In_GameShop;
@@ -38,7 +37,7 @@
 
                 if (playerStats)
                 {
-                    ShowPlayerStats(player, playerData);
+                    player.PlayerStats(playerData);
                 }
 
                 if (inGameShop)
@@ -75,19 +74,14 @@
         private void IfPlayerDie(Player player, Monster monster)
         {
             Console.WriteLine($"{monster.Name} has slain {player.Name} and left with {monster.Health} health!");
-            player.LoseExperiance(player, 10);
+            player.LoseExperiance();
         }
 
         private void IfMonsterDie(Player player, Monster monster)
         {
             Console.WriteLine($"{player.Name} has slain {monster.Name} and left with {player.Health} health!");
-            player.EarnExperience(player);
-            player.DropSilver(player);
-        }
-
-        private void ShowPlayerStats(Player player, PlayerData playerData)
-        {
-            player.PlayerStats(player, playerData);
+            player.EarnExperience();
+            player.DropSilver();
         }
 
         private void Shop(string shopTab, PetTab petShop, GemTab gemShop)
