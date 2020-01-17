@@ -5,11 +5,11 @@
   Also you can earn gold or drop random items.
 ✘ 2. fight boss
   - Fightning a Boss with defined health and damage much stronger then Goblin. You can earn much more experience if boss die and you can 
-  drop much better weapons or equipments.
+  drop better equipment.
 ✔ 3. player stats
-  - That will show the current player statistics, like player level, player current experience, current amount of gold and silver and etc.
+  - That will show the current player statistics as player level, player current experience, current amount of gold and silver and etc.
 ✘ 4. combine weapon
-  - That command will check if player got enough gold to combine the current weapon, maximum + is 5 and the different + will cost different amount.
+  - That command will check if the player got enough gold to combine the current weapon, maximum + is 5 and the different + will cost different amount
   of gold/silver.
 ✘ 5. combine (boots/armguard/armor)
   - Same as "combine weapon" command.
