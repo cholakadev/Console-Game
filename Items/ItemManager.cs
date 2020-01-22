@@ -55,16 +55,5 @@
             collection.ItemsCollection.Add(new Gem("Medium Emerald", 3));
             collection.ItemsCollection.Add(new Gem("Large Emerald", 5));
         }
-
-        public void DropRandomEquipment(ItemsList collection)
-        {
-            LoadItems(collection);
-
-            var rnd = new Random();
-            int maxIndex = collection.ItemsCollection.Count();
-            var item = collection.ItemsCollection[rnd.Next(maxIndex)];
-
-            Console.WriteLine(item.Name);
-        }
     }
 }

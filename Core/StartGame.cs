@@ -16,9 +16,6 @@
 
         private void GameBody(Player player, Monster monster, PlayerData playerData, ItemsList collection)
         {
-            LoadGears(collection);
-
-
             string[] inputCommand = Console.ReadLine().Split().ToArray();
 
             while (true)
@@ -32,7 +29,7 @@
 
                 if (fightMonster)
                 {
-                    CheckFightResult(player, monster);
+                    CheckFightResult(player, monster, collection);
                     player.DefaultValues(player, monster);
                 }
 
@@ -52,7 +49,7 @@
             }
         }
 
-        public void CheckFightResult(Player player, Monster monster)
+        public void CheckFightResult(Player player, Monster monster, ItemsList collection)
         {
             while (true)
             {
@@ -67,7 +64,7 @@
 
                 else if (monster.Health < player.Health && monster.Health <= 0)
                 {
-                    IfMonsterDie(player, monster);
+                    IfMonsterDie(player, monster, collection);
                     break;
                 }
             }
@@ -79,16 +76,14 @@
             player.LoseExperiance();
         }
 
-        private void IfMonsterDie(Player player, Monster monster)
+        private void IfMonsterDie(Player player, Monster monster, ItemsList collection)
         {
             Console.WriteLine($"{player.Name} has slain {monster.Name} and left with {player.Health} health!");
             player.EarnExperience();
             player.DropSilver();
 
-            ItemManager manager = new ItemManager();
-            ItemsList collection = new ItemsList();
 
-            manager.DropRandomEquipment(collection);
+            player.DropEquipment(collection);
         }
 
         private void Shop(string shopTab, PetTab petShop, GemTab gemShop)
@@ -134,12 +129,6 @@
             //LuckyBox luckyBoxShop = new LuckyBox();
 
             Shop(shopTab, petShop, gemShop);
-        }
-
-        private void LoadGears(ItemsList collection)
-        {
-            ItemManager items = new ItemManager();
-            items.LoadItems(collection);
         }
     }
 }

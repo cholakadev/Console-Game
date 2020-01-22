@@ -1,7 +1,9 @@
 ﻿namespace Game.Characters
 {
     using System;
+    using System.Linq;
     using System.Text;
+    using Game.Items;
     using Game.Methods;
     public class Player : Character
     {
@@ -98,14 +100,13 @@
             }
         } // Show current equipments in player stats command.
 
-        public void EarnExperience() // Move the increase of player.Damage in a new method.
+        public void EarnExperience()
         {
             int exp = 0;
 
             if (this.Level < 3)
             {
                 exp = 60;
-                //player.Damage = UtilityMethods.Random(5, 12);
                 this.Experience += exp;
                 Console.WriteLine($"{exp}% experience earned!");
             }
@@ -113,7 +114,6 @@
             else if (this.Level >= 3 && this.Level < 6)
             {
                 exp = 30;
-                //player.Damage = UtilityMethods.Random(6, 14);
                 this.Experience += exp;
                 Console.WriteLine($"{exp}% experience earned!");
             }
@@ -121,7 +121,6 @@
             else if (this.Level >= 6)
             {
                 exp = 15;
-                //player.Damage = UtilityMethods.Random(8, 15);
                 this.Experience += exp;
                 Console.WriteLine($"{exp}% experience earned!");
             }
@@ -135,7 +134,7 @@
             IncreaseDamageAbsorb();
         }
 
-        private void IncreaseDamageAbsorb()//Player player)
+        private void IncreaseDamageAbsorb()
         {
             if (this.Level <= 2)
             {
@@ -155,6 +154,38 @@
             else
             {
                 this.DamageAbsorb = UtilityMethods.Random(4, 7);
+            }
+        }
+
+        public void DropEquipment(ItemsList collection)
+        {
+            ItemManager manager = new ItemManager();
+            manager.LoadItems(collection);
+
+            var rnd = new Random();
+            int maxIndex = collection.ItemsCollection.Count();
+            var item = collection.ItemsCollection[rnd.Next(maxIndex)];
+
+            Console.WriteLine(item.Name);
+
+            if (item.Name.Contains("Armguard"))
+            {
+
+            }
+
+            else if (item.Name.Contains("Boots"))
+            {
+
+            }
+
+            else if (item.Name.Contains("Armor"))
+            {
+
+            }
+
+            else if (item.Name.Contains("Sword"))
+            {
+
             }
         }
 
