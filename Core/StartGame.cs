@@ -56,6 +56,7 @@
             while (true)
             {
                 player.FightEngine(player, monster);
+                player.IncreaseStats(player);
 
                 if (player.Health < monster.Health && player.Health <= 0)
                 {
@@ -75,6 +76,8 @@
         {
             Console.WriteLine($"{monster.Name} has slain {player.Name} and left with {monster.Health} health!");
             player.LoseExperiance();
+            Console.WriteLine(player.Damage);
+            Console.WriteLine(player.DamageAbsorb);
         }
 
         private void IfMonsterDie(Player player, Monster monster)
@@ -82,6 +85,8 @@
             Console.WriteLine($"{player.Name} has slain {monster.Name} and left with {player.Health} health!");
             player.EarnExperience();
             player.DropSilver();
+            Console.WriteLine(player.Damage);
+            Console.WriteLine(player.DamageAbsorb);
         }
 
         private void Shop(string shopTab, PetTab petShop, GemTab gemShop)

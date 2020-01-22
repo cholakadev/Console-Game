@@ -53,27 +53,36 @@
             monster.Health = UtilityMethods.Random(30, 40);
         }
 
-        public void FightEngine(Player player, Monster monster) // (IncreaseStats) - New method to increase stats with each level.
+        public void FightEngine(Player player, Monster monster)
         {
-            //if (player.Level <= 2)
-            //{
-            //    player.Damage = UtilityMethods.Random(5, 12);
-            //    player.DamageAbsorb = UtilityMethods.Random(1, 4);
-            //}
-
-            //else if (player.Level > 2 && player.Level <= 4)
-            //{
-            //    player.Damage = UtilityMethods.Random(7, 14);
-            //    player.DamageAbsorb = UtilityMethods.Random(2, 5);
-            //}
-
-            player.Damage = UtilityMethods.Random(6, 13);
-
             monster.Damage = UtilityMethods.Random(5, 14);
 
             player.Health -= monster.Damage - player.DamageAbsorb;
 
             monster.Health -= player.Damage;
+        }
+
+        public void IncreaseDamage(Player player)
+        {
+            if (player.Level <= 2)
+            {
+                player.Damage = UtilityMethods.Random(5, 12);
+            }
+
+            else if (player.Level > 2 && player.Level <= 4)
+            {
+                this.Damage = UtilityMethods.Random(7, 14);
+            }
+
+            else if (player.Level > 4 && player.Level <= 6)
+            {
+                this.Damage = UtilityMethods.Random(9, 15);
+            }
+
+            else
+            {
+                this.Damage = UtilityMethods.Random(10, 17);
+            }
         }
     }
 }

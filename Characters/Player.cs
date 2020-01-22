@@ -25,7 +25,7 @@
             }
             private set
             {
-                if (value == 4)
+                if (value == 8)
                 {
                     throw new ArgumentException($"{this.Name} has reached max level!");
                 }
@@ -58,7 +58,7 @@
             {
                 this.Level++;
                 this.Experience = this.Experience - 100;
-                if (this.Level < 4)
+                if (this.Level < 8)
                 {
                     Console.WriteLine($"{this.Name} has reached level {this.Level}");
                 }
@@ -127,6 +127,35 @@
             }
 
             LevelUp();
+        }
+
+        public void IncreaseStats(Player player)
+        {
+            IncreaseDamage(player);
+            IncreaseDamageAbsorb();
+        }
+
+        private void IncreaseDamageAbsorb()//Player player)
+        {
+            if (this.Level <= 2)
+            {
+                this.DamageAbsorb = UtilityMethods.Random(1, 4);
+            }
+
+            else if (this.Level > 2 && this.Level <= 4)
+            {
+                this.DamageAbsorb = UtilityMethods.Random(2, 5);
+            }
+
+            else if (this.Level > 4 && this.Level <= 6)
+            {
+                this.DamageAbsorb = UtilityMethods.Random(3, 6);
+            }
+
+            else
+            {
+                this.DamageAbsorb = UtilityMethods.Random(4, 7);
+            }
         }
 
         //public Item DropEquipment(Player player)
