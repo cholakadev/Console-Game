@@ -3,16 +3,11 @@
     using Game.Items.Weapons;
     using Game.Items.Gems;
     using Game.Items.Gears;
-    using System;
-    using System.Collections;
-    using System.Linq;
 
     public sealed class ItemManager
     {
         public void LoadItems(ItemsList collection)
         {
-            //ItemsList collection = new ItemsList();
-
             AddWeapons(collection);
             AddGears(collection);
             AddGems(collection);

@@ -13,12 +13,12 @@
             this.gemShop = new List<ShopItem>();
         }
 
-        public void Add(ShopItem gem)
+        private void Add(ShopItem gem)
         {
             gemShop.Add(gem);
         }
 
-        public void AddGems(GemTab inGameShopGemTab)
+        private void AddGems(GemTab inGameShopGemTab)
         {
             inGameShopGemTab.Add(new Gem("Small Ruby", 0.25, 1));
             inGameShopGemTab.Add(new Gem("Medium Ruby", 0.50 , 3));
@@ -31,6 +31,8 @@
 
         public void PrintGemTab(GemTab collection)
         {
+            AddGems(collection);
+
             foreach (var gem in collection)
             {
                 Console.WriteLine(gem);

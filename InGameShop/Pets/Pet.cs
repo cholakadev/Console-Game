@@ -1,7 +1,6 @@
 ﻿namespace Game.InGameShop.Pets
 {
     using In_GameShop;
-    using System;
     using System.Text;
 
     public class Pet : ShopItem
@@ -17,9 +16,9 @@
             this.DamageAbsorb = damageAbsorb;
         }
 
-        public int Health { get; set; }
-        public int Damage { get; set; }
-        public int DamageAbsorb { get; set; }
+        public int Health { get; private set; }
+        public int Damage { get; private set; }
+        public int DamageAbsorb { get; private set; }
 
         public override string ToString()
         {

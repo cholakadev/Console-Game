@@ -47,9 +47,7 @@
 
         public override string ToString()
         {
-            return $"{this.Name}{Environment.NewLine}" +
-                $"Health: {this.Health}{Environment.NewLine}" +
-                $"Damage Absorb: {this.DamageAbsorb}{Environment.NewLine}";
+            return $"{this.Name}, Health: {this.Health}, Damage Absorb: {this.DamageAbsorb}";
         }
     }
 }

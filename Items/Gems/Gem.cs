@@ -1,21 +1,17 @@
 ﻿namespace Game.Items.Gems
 {
-    using Game.Methods;
-    using System;
-
     public class Gem : Item
     {
         public Gem(string name, int maxCombineLevel) : base(name)
         {
-            this.MaxComvineLevel = maxCombineLevel;
+            this.MaxCombineLevel = maxCombineLevel;
         }
 
-        public int MaxComvineLevel { get; set; }
+        public int MaxCombineLevel { get; private set; }
 
         public override string ToString()
         {
-            return UtilityMethods
-                .OverrideToStringSpeedImprovement(this.Name, this.MaxComvineLevel, "Max combine level");
+            return $"{this.Name}, Max combine level: {this.MaxCombineLevel}";
         }
     }
 }

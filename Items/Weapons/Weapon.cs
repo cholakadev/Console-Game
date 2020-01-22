@@ -1,7 +1,6 @@
 ﻿namespace Game.Items.Weapons
 {
     using System;
-    using Methods;
     public class Weapon : Item
     {
         private int damage;
@@ -29,8 +28,7 @@
 
         public override string ToString()
         {
-            return UtilityMethods
-                .OverrideToStringSpeedImprovement(this.Name, this.Damage, "Damage");
+            return $"{this.Name}, Damage: {this.Damage}";
         }
     }
 }

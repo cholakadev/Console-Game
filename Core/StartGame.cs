@@ -101,14 +101,12 @@
 
                 if (toPetsTab)
                 {
-                    petShop.AddPet(petShop);
                     petShop.PrintPetTab(petShop);
                     shopTab = Console.ReadLine();
                 }
 
                 if (toGemsTab)
                 {
-                    gemShop.AddGems(gemShop);
                     gemShop.PrintGemTab(gemShop);
                     shopTab = Console.ReadLine();
                 }

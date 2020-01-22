@@ -19,7 +19,7 @@
             petShop.Add(item);
         }
 
-        public void AddPet(PetTab inGameShopPetTab)
+        private void AddPet(PetTab inGameShopPetTab)
         {
             inGameShopPetTab.AddShopItem(new Pet("Rabbit", 0.75, 10, 2, 1));
             inGameShopPetTab.AddShopItem(new Pet("White Fox", 1.25, 15, 3, 1));
@@ -29,6 +29,8 @@
 
         public void PrintPetTab(PetTab collection)
         {
+            AddPet(collection);
+
             foreach (var pet in collection)
             {
                 Console.WriteLine(pet);

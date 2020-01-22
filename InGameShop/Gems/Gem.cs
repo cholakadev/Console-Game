@@ -1,7 +1,6 @@
 ﻿namespace Game.InGameShop.Gems
 {
     using Game.In_GameShop;
-    using System;
     using System.Text;
 
     public class Gem : ShopItem

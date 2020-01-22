@@ -16,6 +16,10 @@
             this.DamageAbsorb = 0;
             this.Gold = 0;
             this.Silver = 0;
+            this.Weapon = null;
+            this.Cuirass = null;
+            this.Boots = null;
+            this.Armguard = null;
         }
 
         public int Experience { get; private set; }
@@ -38,6 +42,10 @@
         public int DamageAbsorb { get; private set; }
         public int Silver { get; private set; }
         public double Gold { get; private set; }
+        public Item Weapon { get; set; }
+        public Item Cuirass { get; set; }
+        public Item Boots { get; set; }
+        public Item Armguard { get; set; }
 
         public void LoseExperiance()
         {
@@ -90,10 +98,10 @@
                 sb.AppendLine($"Health: {character.Health}");
                 sb.AppendLine($"Gold: {character.Gold}.{character.Silver}");
 
-                //sb.AppendLine($"{} sword (damage +{})");
-                //sb.AppendLine($"{} armor (damage absorb +{}, health +{})");
-                //sb.AppendLine($"{} boots (damage absorb +{}, health +{})");
-                //sb.AppendLine($"{} armguard (damage absorb +{}, health +{})");
+                sb.AppendLine($"{character.Weapon}");
+                sb.AppendLine($"{character.Cuirass}");
+                sb.AppendLine($"{character.Boots}");
+                sb.AppendLine($"{character.Armguard}");
 
                 string result = sb.ToString().TrimEnd();
                 Console.WriteLine(result);
@@ -166,32 +174,32 @@
             int maxIndex = collection.ItemsCollection.Count();
             var item = collection.ItemsCollection[rnd.Next(maxIndex)];
 
-            Console.WriteLine(item.Name);
+            Console.WriteLine($"You have earned {item.Name}. Congratulations!");
+
+
+            //if (earned equipment is better than current equipment)
 
             if (item.Name.Contains("Armguard"))
             {
-
+                this.Armguard = item;
             }
 
             else if (item.Name.Contains("Boots"))
             {
-
+                this.Boots = item;
             }
 
-            else if (item.Name.Contains("Armor"))
+            else if (item.Name.Contains("Cuirass"))
             {
-
+                this.Cuirass = item;
             }
 
             else if (item.Name.Contains("Sword"))
             {
-
+                this.Weapon = item;
             }
-        }
 
-        //public Item DropEquipment(Player player)
-        //{
-        //    Algorithm to drop random equipment each time.
-        //}
+            // Add other junk items in player inventory.
+        }
     }
 }
