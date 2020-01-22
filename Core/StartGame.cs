@@ -9,14 +9,15 @@
 
     public sealed class StartGame
     {
-        public void Start(Player player, Monster monster, PlayerData playerData)
+        public void Start(Player player, Monster monster, PlayerData playerData, ItemsList collection)
         {
-            GameBody(player, monster, playerData);
+            GameBody(player, monster, playerData, collection);
         }
 
-        private void GameBody(Player player, Monster monster, PlayerData playerData)
+        private void GameBody(Player player, Monster monster, PlayerData playerData, ItemsList collection)
         {
-            LoadGears();
+            LoadGears(collection);
+
 
             string[] inputCommand = Console.ReadLine().Split().ToArray();
 
@@ -76,8 +77,6 @@
         {
             Console.WriteLine($"{monster.Name} has slain {player.Name} and left with {monster.Health} health!");
             player.LoseExperiance();
-            Console.WriteLine(player.Damage);
-            Console.WriteLine(player.DamageAbsorb);
         }
 
         private void IfMonsterDie(Player player, Monster monster)
@@ -85,8 +84,11 @@
             Console.WriteLine($"{player.Name} has slain {monster.Name} and left with {player.Health} health!");
             player.EarnExperience();
             player.DropSilver();
-            Console.WriteLine(player.Damage);
-            Console.WriteLine(player.DamageAbsorb);
+
+            ItemManager manager = new ItemManager();
+            ItemsList collection = new ItemsList();
+
+            manager.DropRandomEquipment(collection);
         }
 
         private void Shop(string shopTab, PetTab petShop, GemTab gemShop)
@@ -134,10 +136,10 @@
             Shop(shopTab, petShop, gemShop);
         }
 
-        private void LoadGears()
+        private void LoadGears(ItemsList collection)
         {
             ItemManager items = new ItemManager();
-            items.LoadItems();
+            items.LoadItems(collection);
         }
     }
 }

@@ -14,7 +14,7 @@
             this.petShop = new List<ShopItem>();
         }
 
-        public void AddShopItem(ShopItem item)
+        private void AddShopItem(ShopItem item)
         {
             petShop.Add(item);
         }

@@ -2,6 +2,7 @@
 {
     using In_GameShop;
     using System;
+    using System.Text;
 
     public class Pet : ShopItem
     {
@@ -22,11 +23,15 @@
 
         public override string ToString()
         {
-            return $"{this.Name}{Environment.NewLine}" +
-                $"Health: {this.Health}{Environment.NewLine}" +
-                $"Damage: {this.Damage}{Environment.NewLine}" +
-                $"Damage Absorb: {this.DamageAbsorb}{Environment.NewLine}" +
-                $"Price: {this.Price}{Environment.NewLine}";
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine($"{this.Name}");
+            sb.AppendLine($"Health: {this.Health}");
+            sb.AppendLine($"Damage: {this.Damage}");
+            sb.AppendLine($"Damage Absorb: {this.DamageAbsorb}");
+            sb.AppendLine($"Price: {this.Price}");
+
+            return sb.ToString();
         }
     }
 }

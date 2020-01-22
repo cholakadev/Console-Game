@@ -2,6 +2,7 @@
 {
     using Game.In_GameShop;
     using System;
+    using System.Text;
 
     public class Gem : ShopItem
     {
@@ -15,13 +16,17 @@
             this.MaxCombineLevel = maxCombineLevel;
         }
 
-        public int MaxCombineLevel { get; set; }
+        public int MaxCombineLevel { get; private set; }
 
         public override string ToString()
         {
-            return $"{this.Name}{Environment.NewLine}" +
-                $"Max combine level: {this.MaxCombineLevel}{Environment.NewLine}" +
-                $"Price: {this.Price}{Environment.NewLine}";
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine($"{this.Name}");
+            sb.AppendLine($"Max combine level: {this.MaxCombineLevel}");
+            sb.AppendLine($"Price: {this.Price}");
+
+            return sb.ToString();
         }
     }
 }

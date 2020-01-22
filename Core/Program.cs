@@ -3,6 +3,7 @@
     using System;
     using Game.Characters;
     using Game.InGameShop.Gems;
+    using Game.Items;
 
     public class Program
     {
@@ -15,8 +16,10 @@
             PlayerData playerData = new PlayerData();
             playerData.Add(pl);
 
+            ItemsList collection = new ItemsList();
+
             StartGame Game = new StartGame();
-            Game.Start(pl, monster, playerData);
+            Game.Start(pl, monster, playerData, collection);
         }
     }
 }

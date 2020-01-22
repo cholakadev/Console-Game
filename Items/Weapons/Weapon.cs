@@ -29,7 +29,8 @@
 
         public override string ToString()
         {
-            return UtilityMethods.OverrideToStringSpeedImprovement(this.Name, this.Damage, "Damage");
+            return UtilityMethods
+                .OverrideToStringSpeedImprovement(this.Name, this.Damage, "Damage");
         }
     }
 }

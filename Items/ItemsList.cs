@@ -1,36 +1,22 @@
 ﻿namespace Game.Items
 {
-    using System.Collections;
     using System.Collections.Generic;
 
-    public sealed class ItemsList : IEnumerable<Item>
+    public class ItemsList
     {
-        private List<Item> itemsList;
-
         public ItemsList()
         {
-            this.itemsList = new List<Item>();
+            this.ItemsCollection = new List<Item>();
         }
 
-        public int Count { get; set; }
-
-        public void Add(Item item)
-        {
-            itemsList.Add(item);
-            this.Count++;
-        }
+        public List<Item> ItemsCollection { get; set; }
 
         public IEnumerator<Item> GetEnumerator()
         {
-            foreach (var item in itemsList)
+            foreach (var item in ItemsCollection)
             {
                 yield return item;
             }
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return this.GetEnumerator();
         }
     }
 }
