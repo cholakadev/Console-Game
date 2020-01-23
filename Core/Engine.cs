@@ -7,14 +7,14 @@
     using In_GameShop;
     using Game.InGameShop.Gems;
 
-    public sealed class StartGame
+    public sealed class Engine
     {
-        public void Start(Player player, Monster monster, PlayerData playerData, ItemsList collection)
+        public void Start(Player player, Monster monster, ItemsList collection)
         {
-            GameBody(player, monster, playerData, collection);
+            GameBody(player, monster, collection);
         }
 
-        private void GameBody(Player player, Monster monster, PlayerData playerData, ItemsList collection)
+        private void GameBody(Player player, Monster monster, ItemsList collection)
         {
             string[] inputCommand = Console.ReadLine().Split().ToArray();
 
@@ -35,7 +35,7 @@
 
                 if (playerStats)
                 {
-                    player.PlayerStats(playerData);
+                    Console.WriteLine(player);
                 }
 
                 if (inGameShop)

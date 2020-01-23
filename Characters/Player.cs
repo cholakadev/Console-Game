@@ -1,6 +1,8 @@
 ﻿namespace Game.Characters
 {
     using System;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using Game.Items;
@@ -86,27 +88,6 @@
                 this.Gold++;
             }
         }
-
-        public void PlayerStats(PlayerData playerData)
-        {
-            foreach (var character in playerData)
-            {
-                StringBuilder sb = new StringBuilder();
-
-                sb.AppendLine($"Level: {character.Level}");
-                sb.AppendLine($"Experience: {character.Experience}");
-                sb.AppendLine($"Health: {character.Health}");
-                sb.AppendLine($"Gold: {character.Gold}.{character.Silver}");
-
-                sb.AppendLine($"{character.Weapon}");
-                sb.AppendLine($"{character.Cuirass}");
-                sb.AppendLine($"{character.Boots}");
-                sb.AppendLine($"{character.Armguard}");
-
-                string result = sb.ToString().TrimEnd();
-                Console.WriteLine(result);
-            }
-        } // Show current equipments in player stats command.
 
         public void EarnExperience()
         {
@@ -200,6 +181,23 @@
             }
 
             // Add other junk items in player inventory.
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine($"Level: {this.Level}");
+            sb.AppendLine($"Experience: {this.Experience}");
+            sb.AppendLine($"Health: {this.Health}");
+            sb.AppendLine($"Gold: {this.Gold}.{this.Silver}");
+
+            sb.AppendLine($"{this.Weapon}");
+            sb.AppendLine($"{this.Cuirass}");
+            sb.AppendLine($"{this.Boots}");
+            sb.AppendLine($"{this.Armguard}");
+
+            return sb.ToString().TrimEnd();
         }
     }
 }
