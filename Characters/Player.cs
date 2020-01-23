@@ -1,11 +1,11 @@
 ﻿namespace Game.Characters
 {
     using System;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using Game.Items;
+    using Game.Items.Gears;
+    using Game.Items.Weapons;
     using Game.Methods;
     public class Player : Character
     {
@@ -44,10 +44,10 @@
         public int DamageAbsorb { get; private set; }
         public int Silver { get; private set; }
         public double Gold { get; private set; }
-        public Item Weapon { get; set; }
-        public Item Cuirass { get; set; }
-        public Item Boots { get; set; }
-        public Item Armguard { get; set; }
+        public Weapon Weapon { get; set; }
+        public Gear Cuirass { get; set; }
+        public Gear Boots { get; set; }
+        public Gear Armguard { get; set; }
 
         public void LoseExperiance()
         {
@@ -155,29 +155,40 @@
             int maxIndex = collection.ItemsCollection.Count();
             var item = collection.ItemsCollection[rnd.Next(maxIndex)];
 
+
             Console.WriteLine($"You have earned {item.Name}. Congratulations!");
 
 
-            //if (earned equipment is better than current equipment)
-
             if (item.Name.Contains("Armguard"))
             {
-                this.Armguard = item;
+                if (this.Armguard.CompareTo((Gear)item) < 0)
+                {
+                    this.Armguard = (Gear)item;
+                }
             }
 
             else if (item.Name.Contains("Boots"))
             {
-                this.Boots = item;
+                if (this.Boots.CompareTo((Gear)item) < 0)
+                {
+                    this.Boots = (Gear)item;
+                }
             }
 
             else if (item.Name.Contains("Cuirass"))
             {
-                this.Cuirass = item;
+                if (this.Cuirass.CompareTo((Gear)item) < 0)
+                {
+                    this.Cuirass = (Gear)item;
+                }
             }
 
             else if (item.Name.Contains("Sword"))
             {
-                this.Weapon = item;
+                if (this.Weapon.CompareTo((Weapon)item) < 0)
+                {
+                    this.Weapon = (Weapon)item;
+                }
             }
 
             // Add other junk items in player inventory.

@@ -1,7 +1,7 @@
 ﻿namespace Game.Items.Gears
 {
     using System;
-    public class Gear : Item
+    public class Gear : Item, IComparable<Gear>
     {
         private int damageAbsorb;
         private int health;
@@ -42,6 +42,24 @@
                 }
 
                 this.damageAbsorb = value;
+            }
+        }
+
+        public int CompareTo(Gear other)
+        {
+            if (this.DamageAbsorb > other.DamageAbsorb)
+            {
+                return 1;
+            }
+
+            else if (this.DamageAbsorb < other.DamageAbsorb)
+            {
+                return -1;
+            }
+
+            else
+            {
+                return 0;
             }
         }
 

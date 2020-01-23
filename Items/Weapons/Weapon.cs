@@ -1,7 +1,7 @@
 ﻿namespace Game.Items.Weapons
 {
     using System;
-    public class Weapon : Item
+    public class Weapon : Item, IComparable<Weapon>
     {
         private int damage;
         public Weapon(string name, int damage) : base(name)
@@ -23,6 +23,24 @@
                 }
 
                 this.damage = value;
+            }
+        }
+
+        public int CompareTo(Weapon other)
+        {
+            if (this.Damage > other.Damage)
+            {
+                return 1;
+            }
+
+            else if (this.Damage < other.Damage)
+            {
+                return -1;
+            }
+
+            else
+            {
+                return 0;
             }
         }
 

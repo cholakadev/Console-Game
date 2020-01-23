@@ -12,7 +12,7 @@
             Player pl = new Player(Console.ReadLine());
             Monster monster = new Monster();
 
-            ItemsList collection = new ItemsList();
+            ItemsList collection = new ItemsList(); // For refactoring. 
 
             Engine Game = new Engine();
             Game.Start(pl, monster, collection);
