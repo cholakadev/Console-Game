@@ -10,19 +10,19 @@
         {
             AddWeapons(collection);
             AddGears(collection);
-            AddGems(collection);
+            //AddGems(collection);
 
-            //foreach (var weapon in collection)
-            //{
-            //    System.Console.WriteLine(weapon);
-            //}
+            foreach (var weapon in collection)
+            {
+                System.Console.WriteLine(weapon);
+            }
         }
 
         private void AddWeapons(ItemsList collection)
         {
-            collection.ItemsCollection.Add(new Weapon("Bronze Sword", 5));
-            collection.ItemsCollection.Add(new Weapon("Silver Sword", 7));
-            collection.ItemsCollection.Add(new Weapon("Golden Sword", 9));
+            collection.ItemsCollection.Add(new Weapon("Bronze Sword", 5, 5));
+            collection.ItemsCollection.Add(new Weapon("Silver Sword", 10, 7));
+            collection.ItemsCollection.Add(new Weapon("Golden Sword", 15, 9));
         }
 
         private void AddGears(ItemsList collection)
@@ -40,15 +40,15 @@
             collection.ItemsCollection.Add(new Gear("Golden Armguard", 30, 4));
         }
 
-        private void AddGems(ItemsList collection)
-        {
-            collection.ItemsCollection.Add(new Gem("Small Ruby", 1));
-            collection.ItemsCollection.Add(new Gem("Medium Ruby", 3));
-            collection.ItemsCollection.Add(new Gem("Large Ruby", 5));
+        //private void AddGems(ItemsList collection)
+        //{
+        //    collection.ItemsCollection.Add(new Gem("Small Ruby", 1));
+        //    collection.ItemsCollection.Add(new Gem("Medium Ruby", 3));
+        //    collection.ItemsCollection.Add(new Gem("Large Ruby", 5));
 
-            collection.ItemsCollection.Add(new Gem("Small Emerald", 1));
-            collection.ItemsCollection.Add(new Gem("Medium Emerald", 3));
-            collection.ItemsCollection.Add(new Gem("Large Emerald", 5));
-        }
+        //    collection.ItemsCollection.Add(new Gem("Small Emerald", 1));
+        //    collection.ItemsCollection.Add(new Gem("Medium Emerald", 3));
+        //    collection.ItemsCollection.Add(new Gem("Large Emerald", 5));
+        //}
     }
 }

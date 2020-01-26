@@ -6,15 +6,16 @@
     using Game.Items;
     using In_GameShop;
     using Game.InGameShop.Gems;
+    using Game.Items.Gears;
 
     public sealed class Engine
     {
-        public void Start(Player player, Monster monster, ItemsList collection)
+        public void Start(Player player, Monster monster, ItemsList collection, ItemManager manager)
         {
-            GameBody(player, monster, collection);
+            GameBody(player, monster, collection, manager);
         }
 
-        private void GameBody(Player player, Monster monster, ItemsList collection)
+        private void GameBody(Player player, Monster monster, ItemsList collection, ItemManager manager)
         {
             string[] inputCommand = Console.ReadLine().Split().ToArray();
 
@@ -29,7 +30,7 @@
 
                 if (fightMonster)
                 {
-                    CheckFightResult(player, monster, collection);
+                    CheckFightResult(player, monster, collection, manager);
                     player.DefaultValues(player, monster);
                 }
 
@@ -49,7 +50,7 @@
             }
         }
 
-        public void CheckFightResult(Player player, Monster monster, ItemsList collection)
+        public void CheckFightResult(Player player, Monster monster, ItemsList collection, ItemManager manager)
         {
             while (true)
             {
@@ -64,7 +65,7 @@
 
                 else if (monster.Health < player.Health && monster.Health <= 0)
                 {
-                    IfMonsterDie(player, monster, collection);
+                    IfMonsterDie(player, monster, collection, manager);
                     break;
                 }
             }
@@ -76,14 +77,14 @@
             player.LoseExperiance();
         }
 
-        private void IfMonsterDie(Player player, Monster monster, ItemsList collection)
+        private void IfMonsterDie(Player player, Monster monster, ItemsList collection, ItemManager manager)
         {
             Console.WriteLine($"{player.Name} has slain {monster.Name} and left with {player.Health} health!");
             player.EarnExperience();
             player.DropSilver();
 
 
-            player.DropEquipment(collection);
+            player.DropEquipment(collection, manager);
         }
 
         private void Shop(string shopTab, PetTab petShop, GemTab gemShop)

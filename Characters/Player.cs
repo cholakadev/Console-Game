@@ -18,10 +18,10 @@
             this.DamageAbsorb = 0;
             this.Gold = 0;
             this.Silver = 0;
-            this.Weapon = null;
-            this.Cuirass = null;
-            this.Boots = null;
-            this.Armguard = null;
+            this.Weapon = new Weapon("None");
+            this.Cuirass = new Gear("None");
+            this.Boots = new Gear("None");
+            this.Armguard = new Gear("None");
         }
 
         public int Experience { get; private set; }
@@ -44,10 +44,10 @@
         public int DamageAbsorb { get; private set; }
         public int Silver { get; private set; }
         public double Gold { get; private set; }
-        public Weapon Weapon { get; set; }
-        public Gear Cuirass { get; set; }
-        public Gear Boots { get; set; }
-        public Gear Armguard { get; set; }
+        public Item Weapon { get; set; }
+        public Item Cuirass { get; set; }
+        public Item Boots { get; set; }
+        public Item Armguard { get; set; }
 
         public void LoseExperiance()
         {
@@ -64,7 +64,7 @@
             }
         }
 
-        public void LevelUp()
+        private void LevelUp()
         {
             if (this.Experience >= 100)
             {
@@ -146,38 +146,34 @@
             }
         }
 
-        public void DropEquipment(ItemsList collection)
+        public void DropEquipment(ItemsList collection, ItemManager manager)
         {
-            ItemManager manager = new ItemManager();
-            manager.LoadItems(collection);
-
             var rnd = new Random();
             int maxIndex = collection.ItemsCollection.Count();
-            var item = collection.ItemsCollection[rnd.Next(maxIndex)];
-
+            Item item = collection.ItemsCollection[rnd.Next(maxIndex)];
 
             Console.WriteLine($"You have earned {item.Name}. Congratulations!");
 
 
             if (item.Name.Contains("Armguard"))
             {
-                if (this.Armguard.CompareTo((Gear)item) < 0)
+                if (this.Armguard.CompareTo(item) < 0)
                 {
-                    this.Armguard = (Gear)item;
+                    this.Armguard = item;
                 }
             }
 
             else if (item.Name.Contains("Boots"))
             {
-                if (this.Boots.CompareTo((Gear)item) < 0)
+                if (this.Boots.CompareTo(item) < 0)
                 {
-                    this.Boots = (Gear)item;
+                    this.Boots = item;
                 }
             }
 
             else if (item.Name.Contains("Cuirass"))
             {
-                if (this.Cuirass.CompareTo((Gear)item) < 0)
+                if (this.Cuirass.CompareTo(item) < 0)
                 {
                     this.Cuirass = (Gear)item;
                 }
@@ -185,9 +181,9 @@
 
             else if (item.Name.Contains("Sword"))
             {
-                if (this.Weapon.CompareTo((Weapon)item) < 0)
+                if (this.Weapon.CompareTo(item) < 0)
                 {
-                    this.Weapon = (Weapon)item;
+                    this.Weapon = item;
                 }
             }
 

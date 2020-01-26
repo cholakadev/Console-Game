@@ -3,6 +3,7 @@
     using System;
     using Game.Characters;
     using Game.Items;
+    using Game.Items.Gears;
 
     public class Program
     {
@@ -12,10 +13,12 @@
             Player pl = new Player(Console.ReadLine());
             Monster monster = new Monster();
 
-            ItemsList collection = new ItemsList(); // For refactoring. 
-
             Engine Game = new Engine();
-            Game.Start(pl, monster, collection);
+            ItemsList collection = new ItemsList();
+            ItemManager manager = new ItemManager();
+
+            manager.LoadItems(collection);
+            Game.Start(pl, monster, collection, manager);
         }
     }
 }

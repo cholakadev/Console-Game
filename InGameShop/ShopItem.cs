@@ -2,11 +2,11 @@
 {
     public class ShopItem
     {
-        interface IShopItem
-        {
-            string Name { get; set; }
-            double Price { get; set; }
-        }
+        //interface IShopItem
+        //{
+        //    string Name { get; set; }
+        //    double Price { get; set; }
+        //}
         public ShopItem()
         {
 
