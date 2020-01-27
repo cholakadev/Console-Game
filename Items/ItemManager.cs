@@ -1,8 +1,8 @@
 ﻿namespace Game.Items
 {
     using Game.Items.Weapons;
-    using Game.Items.Gems;
     using Game.Items.Gears;
+    using Game.Items.Gems;
 
     public sealed class ItemManager
     {
@@ -40,15 +40,15 @@
             collection.ItemsCollection.Add(new Gear("Golden Armguard", 30, 4));
         }
 
-        //private void AddGems(ItemsList collection)
-        //{
-        //    collection.ItemsCollection.Add(new Gem("Small Ruby", 1));
-        //    collection.ItemsCollection.Add(new Gem("Medium Ruby", 3));
-        //    collection.ItemsCollection.Add(new Gem("Large Ruby", 5));
+        private void AddGems(ItemsList collection)
+        {
+            collection.GemsCollection.Add(new Gem("Small Ruby", 1));
+            collection.GemsCollection.Add(new Gem("Medium Ruby", 3));
+            collection.GemsCollection.Add(new Gem("Large Ruby", 5));
 
-        //    collection.ItemsCollection.Add(new Gem("Small Emerald", 1));
-        //    collection.ItemsCollection.Add(new Gem("Medium Emerald", 3));
-        //    collection.ItemsCollection.Add(new Gem("Large Emerald", 5));
-        //}
+            collection.GemsCollection.Add(new Gem("Small Emerald", 1));
+            collection.GemsCollection.Add(new Gem("Medium Emerald", 3));
+            collection.GemsCollection.Add(new Gem("Large Emerald", 5));
+        }
     }
 }

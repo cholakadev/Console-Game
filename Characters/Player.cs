@@ -1,8 +1,10 @@
 ﻿namespace Game.Characters
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using Game.Items.Gems;
     using Game.Items;
     using Game.Items.Gears;
     using Game.Items.Weapons;
@@ -11,6 +13,15 @@
     {
         private const int ExperienceToLose = 10;
         private int level;
+
+        private Gem smallRuby;
+        private Gem mediumRuby;
+        private Gem largeRuby;
+        private Gem smallEmerald;
+        private Gem mediumEmerald;
+        private Gem largeEmerald;
+
+        private Dictionary<Item, int> gems;
         public Player(string name) : base(name, 0, 30)
         {
             this.Experience = 0;
@@ -22,6 +33,13 @@
             this.Cuirass = new Gear("None");
             this.Boots = new Gear("None");
             this.Armguard = new Gear("None");
+            this.smallRuby = new Gem("");
+            this.mediumRuby = new Gem("");
+            this.largeRuby = new Gem("");
+            this.smallEmerald = new Gem("");
+            this.mediumEmerald = new Gem("");
+            this.largeEmerald = new Gem("");
+            this.gems = new Dictionary<Item, int>();
         }
 
         public int Experience { get; private set; }
@@ -146,7 +164,7 @@
             }
         }
 
-        public void DropEquipment(ItemsList collection, ItemManager manager, Player player)
+        public void DropEquipment(ItemsList collection)
         {
             var rnd = new Random();
             int maxIndex = collection.ItemsCollection.Count();
@@ -188,10 +206,70 @@
             }
 
             IncreaseStats();
+
             // Add other junk items in player inventory.
         }
 
-        public void IncreaseStats()
+        public void DropGems(ItemsList gemsCollection)
+        {
+            var rnd = new Random();
+            int maxIndex = gemsCollection.GemsCollection.Count();
+            Gem gem = gemsCollection.GemsCollection[rnd.Next(maxIndex)];
+
+            Console.WriteLine($"You have earned {gem.Name}. Congratulations!");
+
+            if (gem.Name.Contains("Small"))
+            {
+                if (gem.Name.Contains("Ruby"))
+                {
+                    this.gems[gem]++;
+                }
+
+                else if (gem.Name.Contains("Emerald"))
+                {
+                    this.gems[gem]++;
+                }
+            }
+
+            else if (gem.Name.Contains("Medium"))
+            {
+                if (gem.Name.Contains("Ruby"))
+                {
+                    this.gems[gem]++;
+                }
+
+                else if (gem.Name.Contains("Emerald"))
+                {
+                    this.gems[gem]++;
+                }
+            }
+
+            else if (gem.Name.Contains("Lagre"))
+            {
+                if (gem.Name.Contains("Ruby"))
+                {
+                    this.gems[gem]++;
+                }
+
+                else if (gem.Name.Contains("Emerald"))
+                {
+                    this.gems[gem]++;
+                }
+            }
+        }
+
+        private void InitializeGemsDictionary()
+        {
+            this.gems.Add(new Gem("Small Ruby", 1), 0);
+            this.gems.Add(new Gem("Medium Ruby", 3), 0);
+            this.gems.Add(new Gem("Large Ruby", 5), 0);
+
+            this.gems.Add(new Gem("Small Emerald", 1), 0);
+            this.gems.Add(new Gem("Medium Emerald", 1), 0);
+            this.gems.Add(new Gem("Large Emerald", 1), 0);
+        }
+
+        private void IncreaseStats()
         {
             this.Damage += this.Weapon.Damage
                 + this.Cuirass.Damage
@@ -220,6 +298,8 @@
 
             sb.AppendLine($"Total damage: {this.Damage}");
             sb.AppendLine($"Total health: {this.Health}");
+
+            sb.AppendLine($"Gems: {string.Join(", ", gems)}");
 
             return sb.ToString().TrimEnd();
         }

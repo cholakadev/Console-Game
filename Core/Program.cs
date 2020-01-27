@@ -18,7 +18,7 @@
             ItemManager manager = new ItemManager();
 
             manager.LoadItems(collection);
-            Game.Start(pl, monster, collection, manager);
+            Game.Start(pl, monster, collection);
         }
     }
 }

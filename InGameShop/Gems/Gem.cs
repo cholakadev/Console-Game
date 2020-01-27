@@ -9,6 +9,10 @@
         {
         }
 
+        public Gem(string name, double price) : base(name, price)
+        {
+        }
+
         public Gem(string name, double price, int maxCombineLevel)
             : base(name, price)
         {
