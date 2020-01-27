@@ -44,10 +44,10 @@
         public int DamageAbsorb { get; private set; }
         public int Silver { get; private set; }
         public double Gold { get; private set; }
-        public Item Weapon { get; set; }
-        public Item Cuirass { get; set; }
-        public Item Boots { get; set; }
-        public Item Armguard { get; set; }
+        public Item Weapon { get; private set; }
+        public Item Cuirass { get; private set; }
+        public Item Boots { get; private set; }
+        public Item Armguard { get; private set; }
 
         public void LoseExperiance()
         {
@@ -146,7 +146,7 @@
             }
         }
 
-        public void DropEquipment(ItemsList collection, ItemManager manager)
+        public void DropEquipment(ItemsList collection, ItemManager manager, Player player)
         {
             var rnd = new Random();
             int maxIndex = collection.ItemsCollection.Count();
@@ -175,7 +175,7 @@
             {
                 if (this.Cuirass.CompareTo(item) < 0)
                 {
-                    this.Cuirass = (Gear)item;
+                    this.Cuirass = item;
                 }
             }
 
@@ -187,7 +187,21 @@
                 }
             }
 
+            IncreaseStats();
             // Add other junk items in player inventory.
+        }
+
+        public void IncreaseStats()
+        {
+            this.Damage += this.Weapon.Damage
+                + this.Cuirass.Damage
+                + this.Boots.Damage
+                + this.Armguard.Damage;
+
+            this.Health += this.Weapon.Health
+                + this.Cuirass.Health
+                + this.Boots.Health
+                + this.Armguard.Health;
         }
 
         public override string ToString()
@@ -203,6 +217,9 @@
             sb.AppendLine($"{this.Cuirass}");
             sb.AppendLine($"{this.Boots}");
             sb.AppendLine($"{this.Armguard}");
+
+            sb.AppendLine($"Total damage: {this.Damage}");
+            sb.AppendLine($"Total health: {this.Health}");
 
             return sb.ToString().TrimEnd();
         }

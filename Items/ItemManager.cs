@@ -12,10 +12,10 @@
             AddGears(collection);
             //AddGems(collection);
 
-            foreach (var weapon in collection)
-            {
-                System.Console.WriteLine(weapon);
-            }
+            //foreach (var weapon in collection)
+            //{
+            //    System.Console.WriteLine(weapon);
+            //}
         }
 
         private void AddWeapons(ItemsList collection)

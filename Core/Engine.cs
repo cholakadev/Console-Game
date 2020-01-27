@@ -83,8 +83,7 @@
             player.EarnExperience();
             player.DropSilver();
 
-
-            player.DropEquipment(collection, manager);
+            player.DropEquipment(collection, manager, player);
         }
 
         private void Shop(string shopTab, PetTab petShop, GemTab gemShop)

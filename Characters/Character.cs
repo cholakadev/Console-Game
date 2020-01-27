@@ -1,11 +1,13 @@
 ﻿namespace Game.Characters
 {
+    using Game.Items;
     using Game.Methods;
     using System;
     public abstract class Character
     {
         private string name;
         private int damage;
+        private int health;
         public Character(string name, int damage, int health)
         {
             this.Name = name;
@@ -35,7 +37,7 @@
             {
                 return this.damage;
             }
-            private set
+            set
             {
                 if (value < 0)
                 {
@@ -45,7 +47,17 @@
                 this.damage = value;
             }
         }
-        public int Health { get; private set; }
+        public int Health
+        {
+            get
+            {
+                return this.health;
+            }
+            set
+            {
+                this.health = value;
+            }
+        }
 
         public void DefaultValues(Player player, Monster monster)
         {
@@ -66,22 +78,22 @@
         {
             if (player.Level <= 2)
             {
-                player.Damage = UtilityMethods.Random(5, 12);
+                player.Damage = 9;
             }
 
             else if (player.Level > 2 && player.Level <= 4)
             {
-                this.Damage = UtilityMethods.Random(7, 14);
+                player.Damage = 10;
             }
 
             else if (player.Level > 4 && player.Level <= 6)
             {
-                this.Damage = UtilityMethods.Random(9, 15);
+                player.Damage = 12;
             }
 
             else
             {
-                this.Damage = UtilityMethods.Random(10, 17);
+                player.Damage = 15;
             }
         }
     }
