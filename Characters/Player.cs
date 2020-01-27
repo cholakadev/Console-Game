@@ -20,8 +20,6 @@
         private Gem smallEmerald;
         private Gem mediumEmerald;
         private Gem largeEmerald;
-
-        private Dictionary<Item, int> gems;
         public Player(string name) : base(name, 0, 30)
         {
             this.Experience = 0;
@@ -33,13 +31,15 @@
             this.Cuirass = new Gear("None");
             this.Boots = new Gear("None");
             this.Armguard = new Gear("None");
-            this.smallRuby = new Gem("");
-            this.mediumRuby = new Gem("");
-            this.largeRuby = new Gem("");
-            this.smallEmerald = new Gem("");
-            this.mediumEmerald = new Gem("");
-            this.largeEmerald = new Gem("");
-            this.gems = new Dictionary<Item, int>();
+
+            this.smallRuby = new Gem("Small Ruby", 1, 0);
+            this.smallRuby = new Gem("Medium Ruby", 3, 0);
+            this.smallRuby = new Gem("Large Ruby", 5, 0);
+
+            this.smallRuby = new Gem("Small Emerald", 1, 0);
+            this.smallRuby = new Gem("Medium Emerald", 3, 0);
+            this.smallRuby = new Gem("Large Emerald", 5, 0);
+
         }
 
         public int Experience { get; private set; }
@@ -213,7 +213,7 @@
         public void DropGems(ItemsList gemsCollection)
         {
             var rnd = new Random();
-            int maxIndex = gemsCollection.GemsCollection.Count();
+            int maxIndex = gemsCollection.GemsCollection.Count() - 1;
             Gem gem = gemsCollection.GemsCollection[rnd.Next(maxIndex)];
 
             Console.WriteLine($"You have earned {gem.Name}. Congratulations!");
@@ -222,12 +222,12 @@
             {
                 if (gem.Name.Contains("Ruby"))
                 {
-                    this.gems[gem]++;
+                    this.smallRuby.Amount++;
                 }
 
                 else if (gem.Name.Contains("Emerald"))
                 {
-                    this.gems[gem]++;
+                    this.smallEmerald.Amount++;
                 }
             }
 
@@ -235,12 +235,12 @@
             {
                 if (gem.Name.Contains("Ruby"))
                 {
-                    this.gems[gem]++;
+                    this.mediumRuby.Amount++;
                 }
 
                 else if (gem.Name.Contains("Emerald"))
                 {
-                    this.gems[gem]++;
+                    this.mediumEmerald.Amount++;
                 }
             }
 
@@ -248,25 +248,14 @@
             {
                 if (gem.Name.Contains("Ruby"))
                 {
-                    this.gems[gem]++;
+                    this.largeRuby.Amount++;
                 }
 
                 else if (gem.Name.Contains("Emerald"))
                 {
-                    this.gems[gem]++;
+                    this.largeEmerald.Amount++;
                 }
             }
-        }
-
-        private void InitializeGemsDictionary()
-        {
-            this.gems.Add(new Gem("Small Ruby", 1), 0);
-            this.gems.Add(new Gem("Medium Ruby", 3), 0);
-            this.gems.Add(new Gem("Large Ruby", 5), 0);
-
-            this.gems.Add(new Gem("Small Emerald", 1), 0);
-            this.gems.Add(new Gem("Medium Emerald", 1), 0);
-            this.gems.Add(new Gem("Large Emerald", 1), 0);
         }
 
         private void IncreaseStats()
@@ -299,7 +288,13 @@
             sb.AppendLine($"Total damage: {this.Damage}");
             sb.AppendLine($"Total health: {this.Health}");
 
-            sb.AppendLine($"Gems: {string.Join(", ", gems)}");
+            sb.AppendLine($"Small Ruby: {this.smallRuby.Amount}");
+            sb.AppendLine($"Small Ruby: {this.mediumRuby.Amount}");
+            sb.AppendLine($"Small Ruby: {this.largeRuby.Amount}");
+
+            sb.AppendLine($"Small Ruby: {this.smallEmerald.Amount}");
+            sb.AppendLine($"Small Ruby: {this.mediumEmerald.Amount}");
+            sb.AppendLine($"Small Ruby: {this.largeEmerald.Amount}");
 
             return sb.ToString().TrimEnd();
         }

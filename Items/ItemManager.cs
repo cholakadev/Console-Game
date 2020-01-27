@@ -42,13 +42,13 @@
 
         private void AddGems(ItemsList collection)
         {
-            collection.GemsCollection.Add(new Gem("Small Ruby", 1));
-            collection.GemsCollection.Add(new Gem("Medium Ruby", 3));
-            collection.GemsCollection.Add(new Gem("Large Ruby", 5));
+            collection.GemsCollection.Add(new Gem("Small Ruby", 1, 0));
+            collection.GemsCollection.Add(new Gem("Medium Ruby", 3, 0));
+            collection.GemsCollection.Add(new Gem("Large Ruby", 5, 0));
 
-            collection.GemsCollection.Add(new Gem("Small Emerald", 1));
-            collection.GemsCollection.Add(new Gem("Medium Emerald", 3));
-            collection.GemsCollection.Add(new Gem("Large Emerald", 5));
+            collection.GemsCollection.Add(new Gem("Small Emerald", 1, 0));
+            collection.GemsCollection.Add(new Gem("Medium Emerald", 3, 0));
+            collection.GemsCollection.Add(new Gem("Large Emerald", 5, 0));
         }
     }
 }
