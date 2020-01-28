@@ -39,16 +39,5 @@
             collection.ItemsCollection.Add(new Gear("Silver Armguard", 20, 3));
             collection.ItemsCollection.Add(new Gear("Golden Armguard", 30, 4));
         }
-
-        private void AddGems(ItemsList collection)
-        {
-            collection.GemsCollection.Add(new Gem("Small Ruby", 1, 0));
-            collection.GemsCollection.Add(new Gem("Medium Ruby", 3, 0));
-            collection.GemsCollection.Add(new Gem("Large Ruby", 5, 0));
-
-            collection.GemsCollection.Add(new Gem("Small Emerald", 1, 0));
-            collection.GemsCollection.Add(new Gem("Medium Emerald", 3, 0));
-            collection.GemsCollection.Add(new Gem("Large Emerald", 5, 0));
-        }
     }
 }

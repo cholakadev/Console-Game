@@ -1,21 +1,24 @@
 ﻿namespace Game.Items.Gems
 {
-    public class Gem : Item
+    public class Gem
     {
-        public Gem(string name, int maxCombineLevel, int amount) : base(name)
+        public Gem(string name, int maxCombineLevel, int count)
         {
+            this.Name = name;
             this.MaxCombineLevel = maxCombineLevel;
-            this.Amount = amount;
+            this.Count = count;
         }
 
-        public Gem(string name) : base(name)
+        public Gem()
         {
 
         }
+
+        public string Name { get; set; }
 
         public int MaxCombineLevel { get; private set; }
 
-        public int Amount { get; set; }
+        public int Count { get; set; }
 
         public override string ToString()
         {

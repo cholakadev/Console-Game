@@ -16,9 +16,11 @@
             Engine Game = new Engine();
             ItemsList collection = new ItemsList();
             ItemManager manager = new ItemManager();
+            GemsCollection gemsCollection = new GemsCollection();
+            gemsCollection.InitializeGemCollection();
 
             manager.LoadItems(collection);
-            Game.Start(pl, monster, collection);
+            Game.Start(pl, monster, collection, gemsCollection);
         }
     }
 }
