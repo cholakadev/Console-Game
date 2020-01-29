@@ -6,22 +6,22 @@ namespace Game.Items
 {
     public class GemsCollection : IEnumerable<Gem>
     {
-        public List<Gem> Gems { get; set; }
+        public List<Gem> Gems { get; private set; }
 
-        public void InitializeGemCollection()
+        public GemsCollection()
         {
-            Gems.Add(new Gem("Small Ruby", 1, 0));  // Object reference not set to an instance of an object.
+            this.Gems = new List<Gem>();
+        }
+
+        public void InitializeGemCollection() // Add other junk items to drop.
+        {
+            Gems.Add(new Gem("Small Ruby", 1, 0));
             Gems.Add(new Gem("Medium Ruby", 3, 0));
             Gems.Add(new Gem("Large Ruby", 5, 0));
 
             Gems.Add(new Gem("Small Emerald", 1, 0));
             Gems.Add(new Gem("Medium Emerald", 3, 0));
             Gems.Add(new Gem("Large Emerald", 5, 0));
-
-            foreach (var gem in Gems)
-            {
-                System.Console.WriteLine($"{gem.Name} - {gem.MaxCombineLevel}");
-            }
         }
 
         public IEnumerator<Gem> GetEnumerator()

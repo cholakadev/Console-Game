@@ -203,7 +203,12 @@
 
             Console.WriteLine($"You have earned {gem.Name}. Congratulations!");
 
+            gem.Count++;
 
+            foreach (var item in gemsCollection.Gems) // Use in another method which will be called for player stats
+            {
+                Console.WriteLine($"{item.Name}, Max combine level: {item.MaxCombineLevel}, {item.Count} pcs.");
+            }
         }
 
         private void IncreaseStats()
