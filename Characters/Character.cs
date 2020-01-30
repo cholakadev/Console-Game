@@ -1,13 +1,12 @@
 ﻿namespace Game.Characters
 {
-    using Game.Items;
     using Game.Methods;
     using System;
     public abstract class Character
     {
         private string name;
         private int damage;
-        private int health;
+
         public Character(string name, int damage, int health)
         {
             this.Name = name;
@@ -47,17 +46,7 @@
                 this.damage = value;
             }
         }
-        public int Health
-        {
-            get
-            {
-                return this.health;
-            }
-            set
-            {
-                this.health = value;
-            }
-        }
+        public int Health { get; set; }
 
         public void DefaultValues(Player player, Monster monster)
         {

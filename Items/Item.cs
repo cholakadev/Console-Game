@@ -1,8 +1,7 @@
-﻿using System;
-using static Game.Items.GearEquip;
-
-namespace Game.Items
+﻿namespace Game.Items
 {
+    using System;
+    using static Game.Items.GearEquip;
     public class Item : IGearEquippable, IComparable<Item>
     {
         private int health;

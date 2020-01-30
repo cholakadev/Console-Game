@@ -9,12 +9,7 @@
             this.Count = count;
         }
 
-        public Gem()
-        {
-
-        }
-
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         public int MaxCombineLevel { get; private set; }
 

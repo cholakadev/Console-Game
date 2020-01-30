@@ -1,9 +1,8 @@
-﻿using Game.Items.Gems;
-using System.Collections;
-using System.Collections.Generic;
-
-namespace Game.Items
+﻿namespace Game.Items
 {
+    using Game.Items.Gems;
+    using System.Collections;
+    using System.Collections.Generic;
     public class GemsCollection : IEnumerable<Gem>
     {
         public List<Gem> Gems { get; private set; }
