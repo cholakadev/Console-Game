@@ -1,9 +1,8 @@
 ﻿namespace Game.Items.Gears
 {
     using System;
-    using static Game.Items.GearEquip;
 
-    public class Gear : Item, IComparable<Gear>, IGearEquippable
+    public class Gear : Item, IComparable<Gear>, IGear
     {
         public Gear(string name, int health, int damage) : base(name, health, damage)
         {

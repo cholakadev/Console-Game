@@ -1,8 +1,7 @@
 ﻿namespace Game.Items
 {
     using System;
-    using static Game.Items.GearEquip;
-    public class Item : IGearEquippable, IComparable<Item>
+    public class Item : IComparable<Item>, IItem
     {
         private int health;
         private int damage;
@@ -26,7 +25,7 @@
             {
                 return this.health;
             }
-            set
+            private set
             {
                 if (value < 0)
                 {
@@ -44,7 +43,7 @@
             {
                 return this.damage;
             }
-            set
+            private set
             {
                 if (value <= 0)
                 {

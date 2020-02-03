@@ -3,7 +3,7 @@
     using Game.Items.Gems;
     using System.Collections.Generic;
 
-    public class ItemsList
+    public class ItemsList : IItemsList
     {
         public ItemsList()
         {
@@ -12,7 +12,7 @@
         }
 
         public List<Item> ItemsCollection { get; set; }
-        public List<Gem> GemsCollection{ get; set; }
+        public List<Gem> GemsCollection { get; set; }
 
         public IEnumerator<Item> GetEnumerator()
         {

@@ -3,7 +3,7 @@
     using Game.Items.Gems;
     using System.Collections;
     using System.Collections.Generic;
-    public class GemsCollection : IEnumerable<Gem>
+    public class GemsCollection : IEnumerable<Gem>, IGemCollection
     {
         public List<Gem> Gems { get; private set; }
 

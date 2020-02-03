@@ -8,7 +8,7 @@
     using Game.Items.Gears;
     using Game.Items.Weapons;
     using Game.Methods;
-    public class Player : Character
+    public class Player : Character, IPlayer
     {
         private const int ExperienceToLose = 10;
         private int level;

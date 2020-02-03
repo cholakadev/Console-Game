@@ -1,6 +1,6 @@
 ﻿namespace Game.Items.Gems
 {
-    public class Gem
+    public class Gem : IGem
     {
         public Gem(string name, int maxCombineLevel, int count)
         {
