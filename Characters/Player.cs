@@ -8,7 +8,9 @@
     using Game.Items.Gears;
     using Game.Items.Weapons;
     using Game.Methods;
-    public class Player : Character, IPlayer
+    using Game.Characters.Contracts;
+
+    public class Player : Character, ILevelable, ICurrencyCollectable, IDroppable
     {
         private const int ExperienceToLose = 10;
         private int level;
@@ -51,7 +53,7 @@
         public Item Boots { get; private set; }
         public Item Armguard { get; private set; }
 
-        public void LoseExperiance()
+        public void LoseExperience()
         {
             if (this.Experience <= 10)
             {
@@ -79,7 +81,7 @@
             }
         }
 
-        public void DropSilver()
+        public void CollectCurrency()
         {
             int result = UtilityMethods.Random(55, 85);
             this.Silver += result;

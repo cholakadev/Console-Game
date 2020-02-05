@@ -74,14 +74,14 @@
         private void IfPlayerDie(Player player, Monster monster)
         {
             Console.WriteLine($"{monster.Name} has slain {player.Name} and left with {monster.Health} health!");
-            player.LoseExperiance();
+            player.LoseExperience();
         }
 
         private void IfMonsterDie(Player player, Monster monster, ItemsList collection, GemsCollection gemsCollection)
         {
             Console.WriteLine($"{player.Name} has slain {monster.Name} and left with {player.Health} health!");
             player.EarnExperience();
-            player.DropSilver();
+            player.CollectCurrency();
 
             player.DropEquipment(collection);
             player.DropGems(gemsCollection);
