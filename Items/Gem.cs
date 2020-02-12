@@ -8,10 +8,5 @@
         }
 
         public int MaxCombineLevel { get; set; }
-
-        public override string ToString()
-        {
-            return $"{this.Name} | Max Combine Level: {this.MaxCombineLevel}";
-        }
     }
 }

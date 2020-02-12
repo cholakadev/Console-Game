@@ -1,7 +1,6 @@
 ﻿namespace Game.Characters
 {
     using System;
-    using System.Linq;
     using System.Text;
     using Game.Items;
     using Game.Methods;
@@ -103,7 +102,6 @@
 
             if (item.Name.Contains("Sword"))
             {
-
                 Weapon newWeapon = (Weapon)item;
 
                 if (this.Weapon.CompareTo(newWeapon) < 0)
@@ -114,7 +112,6 @@
 
             else if (item.Name.Contains("Cuirass"))
             {
-
                 Armor newArmor = (Armor)item;
 
                 if (this.Armor.CompareTo(newArmor) < 0)
@@ -125,7 +122,6 @@
 
             else if (item.Name.Contains("Boots"))
             {
-
                 Boots newBoots = (Boots)item;
 
                 if (this.Boots.CompareTo(newBoots) < 0)
@@ -134,9 +130,8 @@
                 }
             }
 
-            if (item.Name.Contains("Armguard"))
+            else if (item.Name.Contains("Armguard"))
             {
-
                 Armguard newArmguard = (Armguard)item;
 
                 if (this.Armguard.CompareTo(newArmguard) < 0)
@@ -150,21 +145,19 @@
             // Add other junk items in player inventory.
         }
 
-        //public void DropGems(GemsCollection gemsCollection)
-        //{
-        //    var rnd = new Random();
-        //    int maxIndex = gemsCollection.Gems.Count();
-        //    Gem gem = gemsCollection.Gems[rnd.Next(maxIndex)];
+        public void DropGem()
+        {
+            PlayerInventory inventory = new PlayerInventory();
 
-        //    Console.WriteLine($"You have earned {gem.Name}. Congratulations!");
+            inventory.Drop();
+        }
 
-        //    gem.Count++;
+        public void ShowInventory()
+        {
+            PlayerInventory inventory = new PlayerInventory();
 
-        //    foreach (var item in gemsCollection.Gems) // Use in another method which will be called for player stats
-        //    {
-        //        Console.WriteLine($"{item.Name}, Max combine level: {item.MaxCombineLevel}, {item.Count} pcs.");
-        //    }
-        //}
+            inventory.PrintInventory();
+        }
 
         private void IncreaseStats()
         {
@@ -195,5 +188,7 @@
 
             return sb.ToString().TrimEnd();
         }
+
+        // Player inventory to show gems and other junk items.
     }
 }

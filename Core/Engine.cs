@@ -5,6 +5,7 @@
     using Game.Characters;
     using In_GameShop;
     using Game.InGameShop.Gems;
+    using Game.Items;
 
     public sealed class Engine
     {
@@ -26,6 +27,7 @@
                 bool fightMonster = command.ToLower() == "fight" && action.ToLower() == "monster";
                 bool playerStats = command.ToLower() == "player" && action.ToLower() == "stats";
                 bool inGameShop = command.ToLower() == "in-game" && action.ToLower() == "shop";
+                bool inventory = command.ToLower() == "player" && action.ToLower() == "inventory";
 
                 if (fightMonster)
                 {
@@ -41,6 +43,11 @@
                 if (inGameShop)
                 {
                     GameShop();
+                }
+
+                if (inventory)
+                {
+                    player.ShowInventory();
                 }
 
                 Console.WriteLine();
@@ -88,7 +95,8 @@
             player.CollectCurrency();
 
             player.DropEquipment();
-            //player.DropGems();
+
+            player.DropGem();
         }
 
         private void Shop(string shopTab, PetTab petShop, GemTab gemShop)

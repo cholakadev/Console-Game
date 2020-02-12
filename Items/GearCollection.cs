@@ -11,19 +11,6 @@
 
         public List<Gear> Gears { get; set; }
 
-        public IEnumerator<Gear> GetEnumerator()
-        {
-            foreach (var gear in Gears)
-            {
-                yield return gear;
-            }
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return this.GetEnumerator();
-        }
-
         public void AddGears()
         {
             this.Gears.Add(new Armor("Golden Cuirass", 10, 4));
@@ -41,14 +28,19 @@
             this.Gears.Add(new Weapon("Golden Sword", 10));
             this.Gears.Add(new Weapon("Silver Sword", 8));
             this.Gears.Add(new Weapon("Bronze Sword", 5));
+        }
 
-            this.Gears.Add(new Gem("Small Ruby", 1));
-            this.Gears.Add(new Gem("Medium Ruby", 3));
-            this.Gears.Add(new Gem("Large Ruby", 5));
+        public IEnumerator<Gear> GetEnumerator()
+        {
+            foreach (var gear in Gears)
+            {
+                yield return gear;
+            }
+        }
 
-            this.Gears.Add(new Gem("Small Emerald", 1));
-            this.Gears.Add(new Gem("Medium Emerald", 3));
-            this.Gears.Add(new Gem("Large Emerald", 5));
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
         }
     }
 }

@@ -20,4 +20,8 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Characters\Contracts\" />
+  </ItemGroup>
+
 </Project>
