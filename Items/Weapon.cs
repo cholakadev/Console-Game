@@ -1,4 +1,4 @@
-﻿namespace Game.Items.Weapons
+﻿namespace Game.Items
 {
     using System;
     using System.Text;
