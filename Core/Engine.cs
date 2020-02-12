@@ -54,7 +54,8 @@
         {
             while (true)
             {
-                player.FightEngine(player, monster);
+                Battle battle = new Battle();
+                battle.FightEngine(player, monster);
                 player.IncreaseStats(player);
 
                 if (player.Health < monster.Health && player.Health <= 0)

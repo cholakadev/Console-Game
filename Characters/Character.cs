@@ -54,15 +54,6 @@
             monster.Health = UtilityMethods.Random(30, 40);
         }
 
-        public void FightEngine(Player player, Monster monster)
-        {
-            monster.Damage = UtilityMethods.Random(5, 14);
-
-            player.Health -= monster.Damage - player.DamageAbsorb;
-
-            monster.Health -= player.Damage;
-        }
-
         public void IncreaseDamage(Player player)
         {
             if (player.Level <= 2)
