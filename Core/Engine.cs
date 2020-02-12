@@ -74,13 +74,17 @@
         private void IfPlayerDie(Player player, Monster monster)
         {
             Console.WriteLine($"{monster.Name} has slain {player.Name} and left with {monster.Health} health!");
-            player.LoseExperience();
+            ExperienceProcess expProcess = new ExperienceProcess();
+            expProcess.LoseExperience(player);
         }
 
         private void IfMonsterDie(Player player, Monster monster, ItemsList collection, GemsCollection gemsCollection)
         {
+            ExperienceProcess expProcess = new ExperienceProcess();
+
             Console.WriteLine($"{player.Name} has slain {monster.Name} and left with {player.Health} health!");
-            player.EarnExperience();
+            expProcess.EarnExperience(player);
+
             player.CollectCurrency();
 
             player.DropEquipment(collection);

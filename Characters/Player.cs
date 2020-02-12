@@ -10,9 +10,8 @@
     using Game.Methods;
     using Game.Characters.Contracts;
 
-    public class Player : Character, ILevelable, ICurrencyCollectable, IDroppable
+    public class Player : Character, ICurrencyCollectable, IDroppable
     {
-        private const int ExperienceToLose = 10;
         private int level;
 
         public Player(string name) : base(name, 0, 30)
@@ -28,14 +27,14 @@
             this.Armguard = new Gear("None");
         }
 
-        public int Experience { get; private set; }
+        public int Experience { get; set; }
         public int Level
         {
             get
             {
                 return this.level;
             }
-            private set
+            set
             {
                 if (value == 8)
                 {
@@ -53,34 +52,6 @@
         public Item Boots { get; private set; }
         public Item Armguard { get; private set; }
 
-        public void LoseExperience()
-        {
-            if (this.Experience <= 10)
-            {
-                Console.WriteLine($"Your experience is 0%. Try harder!");
-                this.Experience = 0;
-            }
-
-            else if (this.Experience > 10)
-            {
-                Console.WriteLine($"You lost {ExperienceToLose}% experience!");
-                this.Experience -= ExperienceToLose;
-            }
-        }
-
-        private void LevelUp()
-        {
-            if (this.Experience >= 100)
-            {
-                this.Level++;
-                this.Experience = this.Experience - 100;
-                if (this.Level < 8)
-                {
-                    Console.WriteLine($"{this.Name} has reached level {this.Level}");
-                }
-            }
-        }
-
         public void CollectCurrency()
         {
             int result = UtilityMethods.Random(55, 85);
@@ -91,34 +62,6 @@
                 this.Silver -= 100;
                 this.Gold++;
             }
-        }
-
-        public void EarnExperience()
-        {
-            int exp = 0;
-
-            if (this.Level < 3)
-            {
-                exp = 60;
-                this.Experience += exp;
-                Console.WriteLine($"{exp}% experience earned!");
-            }
-
-            else if (this.Level >= 3 && this.Level < 6)
-            {
-                exp = 30;
-                this.Experience += exp;
-                Console.WriteLine($"{exp}% experience earned!");
-            }
-
-            else if (this.Level >= 6)
-            {
-                exp = 15;
-                this.Experience += exp;
-                Console.WriteLine($"{exp}% experience earned!");
-            }
-
-            LevelUp();
         }
 
         public void IncreaseStats(Player player)

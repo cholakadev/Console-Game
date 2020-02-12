@@ -1,6 +1,6 @@
 ﻿namespace Game.Characters.Contracts
 {
-    public interface ICurrencyCollectable : ICurrency
+    public interface ICurrencyCollectable
     {
         void CollectCurrency();
     }
