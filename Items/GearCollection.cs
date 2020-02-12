@@ -2,9 +2,9 @@
 {
     using System.Collections;
     using System.Collections.Generic;
-    public class ItemsCollection : IEnumerable<Gear>
+    public class GearCollection : IEnumerable<Gear>
     {
-        public ItemsCollection()
+        public GearCollection()
         {
             this.Gears = new List<Gear>();
         }

@@ -3,14 +3,10 @@
     using System;
     using System.Linq;
     using System.Text;
-    using Game.Items.Gems;
     using Game.Items;
-    using Game.Items.Gears;
-    using Game.Items.Weapons;
     using Game.Methods;
-    using Game.Characters.Contracts;
 
-    public class Player : Character, ICurrencyCollectable, IDroppable
+    public class Player : Character
     {
         private int level;
 
@@ -21,10 +17,10 @@
             this.DamageAbsorb = 0;
             this.Gold = 0;
             this.Silver = 0;
-            this.Weapon = new Weapon("None");
-            this.Cuirass = new Gear("None");
-            this.Boots = new Gear("None");
-            this.Armguard = new Gear("None");
+            this.Weapon = new Weapon();
+            this.Armor = new Armor();
+            this.Boots = new Boots();
+            this.Armguard = new Armguard();
         }
 
         public int Experience { get; set; }
@@ -47,10 +43,10 @@
         public int DamageAbsorb { get; private set; }
         public int Silver { get; private set; }
         public double Gold { get; private set; }
-        public Item Weapon { get; private set; }
-        public Item Cuirass { get; private set; }
-        public Item Boots { get; private set; }
-        public Item Armguard { get; private set; }
+        public Weapon Weapon { get; private set; }
+        public Armor Armor { get; private set; }
+        public Boots Boots { get; private set; }
+        public Armguard Armguard { get; private set; }
 
         public void CollectCurrency()
         {
@@ -93,44 +89,59 @@
             }
         }
 
-        public void DropEquipment(ItemsList collection)
+        public void DropEquipment()
         {
+            GearCollection gears = new GearCollection();
+            gears.AddGears();
+
             var rnd = new Random();
-            int maxIndex = collection.ItemsCollection.Count();
-            Item item = collection.ItemsCollection[rnd.Next(maxIndex)];
+            int maxIndex = gears.Gears.Count;
+            Gear item = gears.Gears[rnd.Next(maxIndex)];
 
             Console.WriteLine($"You have earned {item.Name}. Congratulations!");
 
 
-            if (item.Name.Contains("Armguard"))
+            if (item.Name.Contains("Sword"))
             {
-                if (this.Armguard.CompareTo(item) < 0)
-                {
-                    this.Armguard = item;
-                }
-            }
 
-            else if (item.Name.Contains("Boots"))
-            {
-                if (this.Boots.CompareTo(item) < 0)
+                Weapon newWeapon = (Weapon)item;
+
+                if (this.Weapon.CompareTo(newWeapon) < 0)
                 {
-                    this.Boots = item;
+                    this.Weapon = newWeapon;
                 }
             }
 
             else if (item.Name.Contains("Cuirass"))
             {
-                if (this.Cuirass.CompareTo(item) < 0)
+
+                Armor newArmor = (Armor)item;
+
+                if (this.Armor.CompareTo(newArmor) < 0)
                 {
-                    this.Cuirass = item;
+                    this.Armor = newArmor;
                 }
             }
 
-            else if (item.Name.Contains("Sword"))
+            else if (item.Name.Contains("Boots"))
             {
-                if (this.Weapon.CompareTo(item) < 0)
+
+                Boots newBoots = (Boots)item;
+
+                if (this.Boots.CompareTo(newBoots) < 0)
                 {
-                    this.Weapon = item;
+                    this.Boots = newBoots;
+                }
+            }
+
+            if (item.Name.Contains("Armguard"))
+            {
+
+                Armguard newArmguard = (Armguard)item;
+
+                if (this.Armguard.CompareTo(newArmguard) < 0)
+                {
+                    this.Armguard = newArmguard;
                 }
             }
 
@@ -139,31 +150,28 @@
             // Add other junk items in player inventory.
         }
 
-        public void DropGems(GemsCollection gemsCollection)
-        {
-            var rnd = new Random();
-            int maxIndex = gemsCollection.Gems.Count();
-            Gem gem = gemsCollection.Gems[rnd.Next(maxIndex)];
+        //public void DropGems(GemsCollection gemsCollection)
+        //{
+        //    var rnd = new Random();
+        //    int maxIndex = gemsCollection.Gems.Count();
+        //    Gem gem = gemsCollection.Gems[rnd.Next(maxIndex)];
 
-            Console.WriteLine($"You have earned {gem.Name}. Congratulations!");
+        //    Console.WriteLine($"You have earned {gem.Name}. Congratulations!");
 
-            gem.Count++;
+        //    gem.Count++;
 
-            foreach (var item in gemsCollection.Gems) // Use in another method which will be called for player stats
-            {
-                Console.WriteLine($"{item.Name}, Max combine level: {item.MaxCombineLevel}, {item.Count} pcs.");
-            }
-        }
+        //    foreach (var item in gemsCollection.Gems) // Use in another method which will be called for player stats
+        //    {
+        //        Console.WriteLine($"{item.Name}, Max combine level: {item.MaxCombineLevel}, {item.Count} pcs.");
+        //    }
+        //}
 
         private void IncreaseStats()
         {
-            this.Damage += this.Weapon.Damage
-                + this.Cuirass.Damage
-                + this.Boots.Damage
-                + this.Armguard.Damage;
+            this.Damage += this.Weapon.Damage;
 
-            this.Health += this.Weapon.Health
-                + this.Cuirass.Health
+            this.Health +=
+                this.Armor.Health
                 + this.Boots.Health
                 + this.Armguard.Health;
         }
@@ -178,7 +186,7 @@
             sb.AppendLine($"Gold: {this.Gold}.{this.Silver}");
 
             sb.AppendLine($"{this.Weapon}");
-            sb.AppendLine($"{this.Cuirass}");
+            sb.AppendLine($"{this.Armor}");
             sb.AppendLine($"{this.Boots}");
             sb.AppendLine($"{this.Armguard}");
 

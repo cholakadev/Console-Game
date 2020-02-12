@@ -1,6 +1,7 @@
 ﻿namespace Game.Items
 {
     using System;
+
     public class Armguard : Gear, IComparable<Armguard>
     {
         public Armguard(string name, int health, int damageAbsorb) : base(name)
@@ -20,13 +21,7 @@
 
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine(this.Name);
-            sb.AppendLine($"Health: {this.Health}");
-            sb.AppendLine($"Damage Absorb: {this.DamageAbsorb}");
-
-            return sb.ToString().TrimEnd();
+            return $"{this.Name} | Health: {this.Health} | Damage Absorb: {this.DamageAbsorb}";
         }
 
         public int CompareTo(Armguard other)

@@ -5,7 +5,5 @@
         string Name { get; }
 
         int Damage { get; set; }
-
-        
     }
 }

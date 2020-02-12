@@ -3,19 +3,18 @@
     using System;
     using System.Linq;
     using Game.Characters;
-    using Game.Items;
     using In_GameShop;
     using Game.InGameShop.Gems;
-    using Game.Items.Gears;
 
     public sealed class Engine
     {
-        public void Start(Player player, Monster monster, ItemsList collection, GemsCollection gemsCollection)
+        public void Start(Player player, Monster monster)
         {
-            GameBody(player, monster, collection, gemsCollection);
+            GameBody(player, monster);
         }
 
-        private void GameBody(Player player, Monster monster, ItemsList collection, GemsCollection gemsCollection)
+        private void GameBody(Player player, Monster monster
+            )
         {
             string[] inputCommand = Console.ReadLine().Split().ToArray();
 
@@ -30,7 +29,7 @@
 
                 if (fightMonster)
                 {
-                    CheckFightResult(player, monster, collection, gemsCollection);
+                    CheckFightResult(player, monster);
                     player.DefaultValues(player, monster);
                 }
 
@@ -50,7 +49,7 @@
             }
         }
 
-        public void CheckFightResult(Player player, Monster monster, ItemsList collection, GemsCollection gemsCollection)
+        public void CheckFightResult(Player player, Monster monster)
         {
             while (true)
             {
@@ -66,7 +65,7 @@
 
                 else if (monster.Health < player.Health && monster.Health <= 0)
                 {
-                    IfMonsterDie(player, monster, collection, gemsCollection);
+                    IfMonsterDie(player, monster);
                     break;
                 }
             }
@@ -79,7 +78,7 @@
             expProcess.LoseExperience(player);
         }
 
-        private void IfMonsterDie(Player player, Monster monster, ItemsList collection, GemsCollection gemsCollection)
+        private void IfMonsterDie(Player player, Monster monster)
         {
             ExperienceProcess expProcess = new ExperienceProcess();
 
@@ -88,8 +87,8 @@
 
             player.CollectCurrency();
 
-            player.DropEquipment(collection);
-            player.DropGems(gemsCollection);
+            player.DropEquipment();
+            //player.DropGems();
         }
 
         private void Shop(string shopTab, PetTab petShop, GemTab gemShop)

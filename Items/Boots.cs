@@ -1,7 +1,6 @@
 ﻿namespace Game.Items
 {
     using System;
-    using System.Text;
     public class Boots : Gear, IComparable<Boots>
     {
         public Boots(string name, int health, int damageAbsorb) : base(name)
@@ -21,13 +20,7 @@
 
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine(this.Name);
-            sb.AppendLine($"Health: {this.Health}");
-            sb.AppendLine($"Damage Absorb: {this.DamageAbsorb}");
-
-            return sb.ToString().TrimEnd();
+            return $"{this.Name} | Health: {this.Health} | Damage Absorb: {this.DamageAbsorb}";
         }
 
 

@@ -1,7 +1,6 @@
 ﻿namespace Game.Items
 {
     using System;
-    using System.Text;
 
     public class Weapon : Gear, IComparable<Weapon>
     {
@@ -20,12 +19,7 @@
 
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine(this.Name);
-            sb.AppendLine($"Damage: {this.Damage}");
-
-            return sb.ToString().TrimEnd();
+            return $"{this.Name} | Damage: {this.Damage}";
         }
 
         public int CompareTo(Weapon other)
