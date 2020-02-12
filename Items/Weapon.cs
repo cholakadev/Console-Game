@@ -1,16 +1,31 @@
 ﻿namespace Game.Items.Weapons
 {
     using System;
-    public class Weapon : Item, IComparable<Weapon>
+    using System.Text;
+
+    public class Weapon : Gear, IComparable<Weapon>
     {
-        public Weapon(string name, int health, int damage) : base(name, health, damage)
+        public Weapon(string name, int damage) : base(name)
+        {
+
+            this.Damage = damage;
+        }
+
+        public Weapon()
         {
 
         }
 
-        public Weapon(string name) : base(name)
-        {
+        public int Damage { get; set; }
 
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine(this.Name);
+            sb.AppendLine($"Damage: {this.Damage}");
+
+            return sb.ToString().TrimEnd();
         }
 
         public int CompareTo(Weapon other)
@@ -29,11 +44,6 @@
             {
                 return 0;
             }
-        }
-
-        public override string ToString()
-        {
-            return $"{this.Name}, Health: {this.Health}, Damage: {this.Damage}";
         }
     }
 }

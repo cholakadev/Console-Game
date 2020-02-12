@@ -1,38 +1,23 @@
-﻿namespace Game.Items.Gears
+﻿namespace Game.Items
 {
-    using System;
-
-    public class Gear : Item, IComparable<Gear>, IGear
+    public abstract class Gear
     {
-        public Gear(string name, int health, int damage) : base(name, health, damage)
+        private string name;
+
+        protected Gear(string name)
         {
+            Name = name;
         }
 
-        public Gear(string name) : base(name)
+        public Gear()
         {
+
         }
 
-        public int CompareTo(Gear other)
+        public string Name
         {
-            if (this.Damage > other.Damage)
-            {
-                return 1;
-            }
-
-            else if (this.Damage < other.Damage)
-            {
-                return -1;
-            }
-
-            else
-            {
-                return 0;
-            }
-        }
-
-        public override string ToString()
-        {
-            return $"{this.Name}, Health: {this.Health}, Damage: {this.Damage}";
+            get { return name; }
+            set { name = value; }
         }
     }
 }
