@@ -14,9 +14,9 @@
 
         }
 
-        public int Health { get; set; }
+        public int Health { get; private set; }
 
-        public int DamageAbsorb { get; set; }
+        public int DamageAbsorb { get; private set; }
 
         public override string ToString()
         {

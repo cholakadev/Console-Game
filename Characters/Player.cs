@@ -2,6 +2,7 @@
 {
     using System;
     using System.Text;
+    using Game.Characters.Responsible_For_Player;
     using Game.Items;
     using Game.Methods;
 
@@ -39,13 +40,36 @@
                 this.level = value;
             }
         }
-        public int DamageAbsorb { get; private set; }
+        public int DamageAbsorb { get; set; }
         public int Silver { get; private set; }
         public double Gold { get; private set; }
         public Weapon Weapon { get; private set; }
         public Armor Armor { get; private set; }
         public Boots Boots { get; private set; }
         public Armguard Armguard { get; private set; }
+
+        public void ChangeEquipment(Gear newGear)
+        {
+            if (newGear is Armor)
+            {
+                this.Armor = (Armor)newGear;
+            }
+
+            else if (newGear is Boots)
+            {
+                this.Boots = (Boots)newGear;
+            }
+
+            else if (newGear is Armguard)
+            {
+                this.Armguard = (Armguard)newGear;
+            }
+
+            else if (newGear is Weapon)
+            {
+                this.Weapon = (Weapon)newGear;
+            }
+        }
 
         public void CollectCurrency()
         {
@@ -59,114 +83,15 @@
             }
         }
 
-        public void IncreaseStats(Player player)
+        public void IncreasePlayerStats(Player player)
         {
-            IncreaseDamage(player);
-            IncreaseDamageAbsorb();
-        }
+            DamageIncrease damageIncrease = new DamageIncrease();
 
-        private void IncreaseDamageAbsorb()
-        {
-            if (this.Level <= 2)
-            {
-                this.DamageAbsorb = UtilityMethods.Random(1, 4);
-            }
+            damageIncrease.IncreaseDamage(player);
 
-            else if (this.Level > 2 && this.Level <= 4)
-            {
-                this.DamageAbsorb = UtilityMethods.Random(2, 5);
-            }
+            AbsorbIncrease absorbIncrease = new AbsorbIncrease();
 
-            else if (this.Level > 4 && this.Level <= 6)
-            {
-                this.DamageAbsorb = UtilityMethods.Random(3, 6);
-            }
-
-            else
-            {
-                this.DamageAbsorb = UtilityMethods.Random(4, 7);
-            }
-        }
-
-        public void DropEquipment()
-        {
-            GearCollection gears = new GearCollection();
-            gears.AddGears();
-
-            var rnd = new Random();
-            int maxIndex = gears.Gears.Count;
-            Gear item = gears.Gears[rnd.Next(maxIndex)];
-
-            Console.WriteLine($"You have earned {item.Name}. Congratulations!");
-
-
-            if (item.Name.Contains("Sword"))
-            {
-                Weapon newWeapon = (Weapon)item;
-
-                if (this.Weapon.CompareTo(newWeapon) < 0)
-                {
-                    this.Weapon = newWeapon;
-                }
-            }
-
-            else if (item.Name.Contains("Cuirass"))
-            {
-                Armor newArmor = (Armor)item;
-
-                if (this.Armor.CompareTo(newArmor) < 0)
-                {
-                    this.Armor = newArmor;
-                }
-            }
-
-            else if (item.Name.Contains("Boots"))
-            {
-                Boots newBoots = (Boots)item;
-
-                if (this.Boots.CompareTo(newBoots) < 0)
-                {
-                    this.Boots = newBoots;
-                }
-            }
-
-            else if (item.Name.Contains("Armguard"))
-            {
-                Armguard newArmguard = (Armguard)item;
-
-                if (this.Armguard.CompareTo(newArmguard) < 0)
-                {
-                    this.Armguard = newArmguard;
-                }
-            }
-
-            IncreaseStats();
-
-            // Add other junk items in player inventory.
-        }
-
-        public void DropGem()
-        {
-            PlayerInventory inventory = new PlayerInventory();
-
-            inventory.Drop();
-        }
-
-        public void ShowInventory()
-        {
-            PlayerInventory inventory = new PlayerInventory();
-
-            inventory.PrintInventory();
-        }
-
-        private void IncreaseStats()
-        {
-            this.Damage += this.Weapon.Damage;
-
-            this.Health +=
-                this.Armor.Health
-                + this.Boots.Health
-                + this.Armguard.Health;
+            absorbIncrease.IncreaseDamageAbsorb(player);
         }
 
         public override string ToString()
@@ -188,7 +113,5 @@
 
             return sb.ToString().TrimEnd();
         }
-
-        // Player inventory to show gems and other junk items.
     }
 }
