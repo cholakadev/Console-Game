@@ -22,7 +22,7 @@
 
                 if (player.Weapon.CompareTo(newWeapon) < 0)
                 {
-                    player.ChangeEquipment(newWeapon);
+                    ChangeEquipment(newWeapon, player);
                 }
             }
 
@@ -32,7 +32,7 @@
 
                 if (player.Armor.CompareTo(newArmor) < 0)
                 {
-                    player.ChangeEquipment(newArmor);
+                    ChangeEquipment(newArmor, player);
                 }
             }
 
@@ -42,7 +42,7 @@
 
                 if (player.Boots.CompareTo(newBoots) < 0)
                 {
-                    player.ChangeEquipment(newBoots);
+                    ChangeEquipment(newBoots, player);
                 }
             }
 
@@ -52,11 +52,34 @@
 
                 if (player.Armguard.CompareTo(newArmguard) < 0)
                 {
-                    player.ChangeEquipment(newArmguard);
+                    ChangeEquipment(newArmguard, player);
                 }
             }
 
             IncreaseStats(player);
+        }
+
+        public void ChangeEquipment(Gear newGear, Player player)
+        {
+            if (newGear is Armor)
+            {
+                player.Armor = (Armor)newGear;
+            }
+
+            else if (newGear is Boots)
+            {
+                player.Boots = (Boots)newGear;
+            }
+
+            else if (newGear is Armguard)
+            {
+                player.Armguard = (Armguard)newGear;
+            }
+
+            else if (newGear is Weapon)
+            {
+                player.Weapon = (Weapon)newGear;
+            }
         }
 
         private void IncreaseStats(Player player)

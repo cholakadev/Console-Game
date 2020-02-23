@@ -43,33 +43,33 @@
         public int DamageAbsorb { get; set; }
         public int Silver { get; private set; }
         public double Gold { get; private set; }
-        public Weapon Weapon { get; private set; }
-        public Armor Armor { get; private set; }
-        public Boots Boots { get; private set; }
-        public Armguard Armguard { get; private set; }
+        public Weapon Weapon { get; set; }
+        public Armor Armor { get; set; }
+        public Boots Boots { get; set; }
+        public Armguard Armguard { get; set; }
 
-        public void ChangeEquipment(Gear newGear)
-        {
-            if (newGear is Armor)
-            {
-                this.Armor = (Armor)newGear;
-            }
+        //public void ChangeEquipment(Gear newGear)
+        //{
+        //    if (newGear is Armor)
+        //    {
+        //        this.Armor = (Armor)newGear;
+        //    }
 
-            else if (newGear is Boots)
-            {
-                this.Boots = (Boots)newGear;
-            }
+        //    else if (newGear is Boots)
+        //    {
+        //        this.Boots = (Boots)newGear;
+        //    }
 
-            else if (newGear is Armguard)
-            {
-                this.Armguard = (Armguard)newGear;
-            }
+        //    else if (newGear is Armguard)
+        //    {
+        //        this.Armguard = (Armguard)newGear;
+        //    }
 
-            else if (newGear is Weapon)
-            {
-                this.Weapon = (Weapon)newGear;
-            }
-        }
+        //    else if (newGear is Weapon)
+        //    {
+        //        this.Weapon = (Weapon)newGear;
+        //    }
+        //}
 
         public void CollectCurrency()
         {
