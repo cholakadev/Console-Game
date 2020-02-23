@@ -1,11 +1,12 @@
 ﻿namespace Game.Characters.Monsters
 {
     using Game.Methods;
-    public class Boss : Character
+    public class Boss : IEnemy
     {
-        public Boss() : base("Goblins's Imperator", UtilityMethods.Random(5, 12), UtilityMethods.Random(50, 60))
-        {
+        public string Name { get; private set; }
 
-        }
+        public int Damage { get; private set; }
+
+        public int Health { get; private set; }
     }
 }

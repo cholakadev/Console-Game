@@ -32,7 +32,8 @@
                 if (fightMonster)
                 {
                     CheckFightResult(player, monster);
-                    player.DefaultValues(player, monster);
+                    player.DefaultValues();
+                    monster.MonsterDefaultValues();
                 }
 
                 if (playerStats)

@@ -48,10 +48,9 @@
         }
         public int Health { get; set; }
 
-        public void DefaultValues(Player player, Monster monster)
+        public void DefaultValues()
         {
-            player.Health = 30;
-            monster.Health = UtilityMethods.Random(30, 40);
+            this.Health = 30;
         }
     }
 }
