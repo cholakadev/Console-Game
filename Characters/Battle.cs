@@ -1,7 +1,6 @@
 ﻿namespace Game.Characters
 {
     using Game.Characters.Monsters;
-    using Game.Methods;
     public class Battle
     {
         public void FightEngine(Player player, EnemyCharacter monster)
