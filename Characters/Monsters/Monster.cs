@@ -1,22 +1,14 @@
 ﻿namespace Game.Characters
 {
+    using Game.Characters.Monsters;
     using Game.Methods;
-    public class Monster : IEnemy
+    public class Monster : EnemyCharacter, IEnemy
     {
-        public Monster()
+        public Monster() : base("Goblin", UtilityMethods.Random(5, 13), UtilityMethods.Random(30, 40))
         {
-            this.Name = "Goblin";
-            this.Damage = UtilityMethods.Random(5, 12);
-            this.Health = UtilityMethods.Random(30, 40);
         }
 
-        public string Name { get; private set; }
-
-        public int Damage { get; private set; }
-
-        public int Health { get; set; }
-
-        public void MonsterDefaultValues()
+        public override void DefaultValues()
         {
             this.Health = UtilityMethods.Random(30, 40);
         }

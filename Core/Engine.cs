@@ -33,7 +33,7 @@
                 {
                     CheckFightResult(player, monster);
                     player.DefaultValues();
-                    monster.MonsterDefaultValues();
+                    monster.DefaultValues();
                 }
 
                 if (playerStats)
