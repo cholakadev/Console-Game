@@ -48,29 +48,6 @@
         public Boots Boots { get; set; }
         public Armguard Armguard { get; set; }
 
-        //public void ChangeEquipment(Gear newGear)
-        //{
-        //    if (newGear is Armor)
-        //    {
-        //        this.Armor = (Armor)newGear;
-        //    }
-
-        //    else if (newGear is Boots)
-        //    {
-        //        this.Boots = (Boots)newGear;
-        //    }
-
-        //    else if (newGear is Armguard)
-        //    {
-        //        this.Armguard = (Armguard)newGear;
-        //    }
-
-        //    else if (newGear is Weapon)
-        //    {
-        //        this.Weapon = (Weapon)newGear;
-        //    }
-        //}
-
         public void CollectCurrency()
         {
             int result = UtilityMethods.Random(55, 85);

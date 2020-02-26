@@ -1,6 +1,5 @@
 ﻿namespace Game.Characters
 {
-    using Game.Methods;
     using System;
     public abstract class Character
     {
