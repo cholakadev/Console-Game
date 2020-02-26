@@ -6,7 +6,7 @@
         public Monster()
         {
             this.Name = "Goblin";
-            this.Damage = UtilityMethods.Random(5, 14);
+            this.Damage = UtilityMethods.Random(5, 12);
             this.Health = UtilityMethods.Random(30, 40);
         }
 
